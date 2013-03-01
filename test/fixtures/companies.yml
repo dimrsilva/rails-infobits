@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+festaefestas:
+  id: 3
+  fantasy_name: Festa e Festas
+  legal_name: José Eustáquio Lopes da Silva
+  doc_cnpj: 1234-5678-1011
+hotclick:
+  id: 4
+  fantasy_name: Hotclick Acesso à Internet
+  legal_name: Hotclick ltda.
+  doc_cnpj: 1234-5678-1021

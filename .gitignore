@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Astah backup files
+*.asta.bak
+
+# Gemfile.lock
+/Gemfile.lock

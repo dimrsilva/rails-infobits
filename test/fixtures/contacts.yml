@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+anderson:
+  id: 1
+  type: Person
+  fullname: Anderson Ribeiro e Silva
+  birthdate: 1990-08-26
+
+alessandro:
+  id: 2
+  type: Person
+  fullname: Alessandro Ribeiro e Silva
+  birthdate: 1990-07-08
+
+festaefestas:
+  id: 3
+  type: Company
+  fullname: Festa & Festas Eventos
+  note: Empresa para compra de refrigerantes
+
+hotclick:
+  id: 4
+  type: Company
+  fullname: Hotclick Acesso à Internet
+  birthdate: 2013-02-10
+
+eustaquio:
+  id: 5
+  type: Person
+  fullname: José Eustáquio Lopes da Silva
+  birthdate: 1954-04-05
+
+paulo:
+  id: 6
+  type: Person
+  fullname: Paulo Henrique Marques Mesquita
+  birthdate: 1991-05-14
