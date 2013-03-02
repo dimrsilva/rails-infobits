@@ -31,7 +31,7 @@ test:
   pool: 5
   username: root
   password: "123"
-  server: 127.0.0.1
+  server: 127.0.0.3
   port: 3306
 
 # production:
