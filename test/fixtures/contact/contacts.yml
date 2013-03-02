@@ -6,36 +6,36 @@
 #
 anderson:
   id: 1
-  type: Person
+  type: Contact::Person
   fullname: Anderson Ribeiro e Silva
   birthdate: 1990-08-26
 
 alessandro:
   id: 2
-  type: Person
+  type: Contact::Person
   fullname: Alessandro Ribeiro e Silva
   birthdate: 1990-07-08
 
 festaefestas:
   id: 3
-  type: Company
+  type: Contact::Company
   fullname: Festa & Festas Eventos
   note: Empresa para compra de refrigerantes
 
 hotclick:
   id: 4
-  type: Company
+  type: Contact::Company
   fullname: Hotclick Acesso à Internet
   birthdate: 2013-02-10
 
 eustaquio:
   id: 5
-  type: Person
+  type: Contact::Person
   fullname: José Eustáquio Lopes da Silva
   birthdate: 1954-04-05
 
 paulo:
   id: 6
-  type: Person
+  type: Contact::Person
   fullname: Paulo Henrique Marques Mesquita
   birthdate: 1991-05-14

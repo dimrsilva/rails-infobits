@@ -1,0 +1,2 @@
+module Contacts::PeopleHelper
+end

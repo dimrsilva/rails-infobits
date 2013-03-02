@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class PersonTest < ActiveSupport::TestCase
+class Contact::PersonTest < ActiveSupport::TestCase
   test "person has contact fullname attr" do
-    company = Person.first
+    company = Contact::Person.first
     assert company.fullname
   end
 end

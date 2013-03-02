@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130301004429) do
 
-  create_table "companies", :force => true do |t|
+  create_table "contact_companies", :force => true do |t|
     t.string "fantasy_name"
     t.string "legal_name"
     t.string "doc_cnpj"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20130301004429) do
     t.string "doc_im"
   end
 
-  create_table "contacts", :force => true do |t|
+  create_table "contact_contacts", :force => true do |t|
     t.string   "type"
     t.string   "fullname"
     t.date     "birthdate"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20130301004429) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "people", :force => true do |t|
+  create_table "contact_people", :force => true do |t|
     t.string "prefix"
     t.string "firstname"
     t.string "middlename"
@@ -39,6 +39,6 @@ ActiveRecord::Schema.define(:version => 20130301004429) do
     t.string "doc_rg"
   end
 
-  create_view "view_companies", "select `contacts`.`id` AS `id`,`contacts`.`type` AS `type`,`contacts`.`fullname` AS `fullname`,`contacts`.`birthdate` AS `birthdate`,`contacts`.`note` AS `note`,`contacts`.`created_at` AS `created_at`,`contacts`.`updated_at` AS `updated_at`,`companies`.`fantasy_name` AS `fantasy_name`,`companies`.`legal_name` AS `legal_name`,`companies`.`doc_cnpj` AS `doc_cnpj`,`companies`.`doc_ie` AS `doc_ie`,`companies`.`doc_im` AS `doc_im` from `contacts` join `companies` where (`contacts`.`id` = `companies`.`id`)", :force => true
-  create_view "view_people", "select `contacts`.`id` AS `id`,`contacts`.`type` AS `type`,`contacts`.`fullname` AS `fullname`,`contacts`.`birthdate` AS `birthdate`,`contacts`.`note` AS `note`,`contacts`.`created_at` AS `created_at`,`contacts`.`updated_at` AS `updated_at`,`people`.`prefix` AS `prefix`,`people`.`firstname` AS `firstname`,`people`.`middlename` AS `middlename`,`people`.`lastname` AS `lastname`,`people`.`doc_cpf` AS `doc_cpf`,`people`.`doc_rg` AS `doc_rg` from `contacts` join `people` where (`contacts`.`id` = `people`.`id`)", :force => true
+  create_view "view_contact_companies", "select `contact_contacts`.`id` AS `id`,`contact_contacts`.`type` AS `type`,`contact_contacts`.`fullname` AS `fullname`,`contact_contacts`.`birthdate` AS `birthdate`,`contact_contacts`.`note` AS `note`,`contact_contacts`.`created_at` AS `created_at`,`contact_contacts`.`updated_at` AS `updated_at`,`contact_companies`.`fantasy_name` AS `fantasy_name`,`contact_companies`.`legal_name` AS `legal_name`,`contact_companies`.`doc_cnpj` AS `doc_cnpj`,`contact_companies`.`doc_ie` AS `doc_ie`,`contact_companies`.`doc_im` AS `doc_im` from `contact_contacts` join `contact_companies` where (`contact_contacts`.`id` = `contact_companies`.`id`)", :force => true
+  create_view "view_contact_people", "select `contact_contacts`.`id` AS `id`,`contact_contacts`.`type` AS `type`,`contact_contacts`.`fullname` AS `fullname`,`contact_contacts`.`birthdate` AS `birthdate`,`contact_contacts`.`note` AS `note`,`contact_contacts`.`created_at` AS `created_at`,`contact_contacts`.`updated_at` AS `updated_at`,`contact_people`.`prefix` AS `prefix`,`contact_people`.`firstname` AS `firstname`,`contact_people`.`middlename` AS `middlename`,`contact_people`.`lastname` AS `lastname`,`contact_people`.`doc_cpf` AS `doc_cpf`,`contact_people`.`doc_rg` AS `doc_rg` from `contact_contacts` join `contact_people` where (`contact_contacts`.`id` = `contact_people`.`id`)", :force => true
 end

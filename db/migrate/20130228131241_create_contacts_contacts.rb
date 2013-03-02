@@ -1,6 +1,6 @@
-class CreateContacts < ActiveRecord::Migration
+class CreateContactsContacts < ActiveRecord::Migration
   def self.up
-    create_table :contacts do |t|
+    create_table :contact_contacts do |t|
     	t.string :type #Used by citier
     	t.string :fullname, :nil => false
     	t.date   :birthdate
@@ -10,6 +10,6 @@ class CreateContacts < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :contacts
+    drop_table :contact_contacts
   end
 end

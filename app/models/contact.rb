@@ -1,3 +1,5 @@
-class Contact < ActiveRecord::Base
-  acts_as_citier
+module Contact
+  def self.table_name_prefix
+    'contact_'
+  end
 end

@@ -1,0 +1,21 @@
+<%= form_for(@row) do |form| %>
+  <% if @row.errors.any? %>
+  <div class="area messages">
+    <ul>
+    <% @row.errors.full_messages.each do |msg| %>
+      <li class="error"><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <% form_fields do |field| %>
+  <div>
+    <%= form.label field[:name] %>
+    <%= form.send field[:widget], field[:name] %>
+  </div>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>
+
