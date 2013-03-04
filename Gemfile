@@ -48,5 +48,11 @@ gem 'citier'
 # Create views on database
 gem 'schema_plus'
 
+# Authentication solution
+gem 'devise'
+
+# Authorization library for Ruby on Rails
+gem "cancan"
+
 # Create views on database
 #gem 'rails_sql_views', git: 'git://github.com/ryanlitalien/rails_sql_views.git'
