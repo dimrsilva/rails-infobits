@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
       <% @template_row.table_list_columns do |h| %>
@@ -10,7 +10,7 @@
       </th>
     </tr>
   </thead>
-  <thead>
+  <tbody>
     <% @list.each do |row| %>
     <% if row == @row %>
     <tr class="selected">
@@ -26,11 +26,11 @@
         <%= link_to edit_polymorphic_url row do %>
           <i class="icon-pencil" title="Edit"></i>
         <% end %>
-        <%= link_to row, :method => 'destroy', :confirm => 'Are you sure?' do %>
+        <%= link_to row, :method => 'delete', :confirm => 'Are you sure?' do %>
           <i class="icon-remove" title="Remove"></i>
         <% end %>
       </td>
     </tr>
     <% end %>
-  </thead>
+  </tbody>
 </table>

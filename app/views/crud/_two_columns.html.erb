@@ -1,11 +1,10 @@
 <p>
-  <a class="btn btn-primary" href="#">Create</a>
+  <%= link_to 'Create Person', new_contact_person_path, :class => 'btn' %>
+  <%= link_to 'Create Company', new_contact_company_path, :class => 'btn' %>
 </p>
 <div class="row">
   <div class="span6">
-    <div class="well">
-      <%= render 'table_list' %>
-    </div>
+    <%= render 'table_list' %>
   </div>
   <div class="span6">
     <div class="well">

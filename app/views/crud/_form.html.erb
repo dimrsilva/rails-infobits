@@ -1,4 +1,4 @@
-<%= form_for @row, :html => { :class => 'form-horizontal' } do |form| %>
+<%= form_for @row, :html => { :class => 'form-horizontal' }, :builder => CrudHelper::FormBuilder do |form| %>
   <% if @row.errors.any? %>
   <div class="area messages">
     <ul>
@@ -11,6 +11,9 @@
 
   <%= render 'form_fields', :form => form %>
 
-  <%= form.submit :class => 'btn' %>
+  <%= form.submit :class => 'btn btn-primary' %>
+  <% if @row.id %>
+  <%= link_to 'Delete', @row, :class => 'btn', :method => 'delete', :confirm => 'Are you sure?' %>
+  <% end %>
 <% end %>
 

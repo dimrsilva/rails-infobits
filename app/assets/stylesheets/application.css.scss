@@ -23,3 +23,10 @@ form textarea {
   min-height: 20px;
   max-height: 180px;
 }
+
+input, textarea, .uneditable-input {
+    width: 206px;
+}
+input.datepicker {
+    width: 179px;
+}

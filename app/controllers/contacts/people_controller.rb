@@ -1,2 +1,2 @@
-class Contacts::PeopleController < CrudController
+class Contacts::PeopleController < Contacts::ContactsController
 end

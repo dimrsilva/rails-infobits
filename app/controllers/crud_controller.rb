@@ -58,7 +58,7 @@ class CrudController < ApplicationController
   def destroy
     @row.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to get_model }
       format.json { head :no_content }
     end
   end 
@@ -90,6 +90,11 @@ class CrudController < ApplicationController
 
     def init
       @template_row = get_model.new
-      @list = get_model.all
+      load_list
     end
+
+    protected
+      def load_list
+        @list = get_model.all
+      end
 end

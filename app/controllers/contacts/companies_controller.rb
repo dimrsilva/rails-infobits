@@ -1,2 +1,2 @@
-class Contacts::CompaniesController < CrudController
+class Contacts::CompaniesController < Contacts::ContactsController
 end
