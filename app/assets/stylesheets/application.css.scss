@@ -11,3 +11,15 @@
  *= require_self
  *= require_tree .
  */
+body {
+  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+form textarea {
+  width: 206px;
+  min-width: 206px;
+  max-width: 206px;
+  height: 60px;
+  min-height: 20px;
+  max-height: 180px;
+}

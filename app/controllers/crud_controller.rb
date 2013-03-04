@@ -1,12 +1,13 @@
 class CrudController < ApplicationController
   protect_from_forgery
 
+  before_filter :init
+  before_filter :find_row, :only => [:show, :edit, :update, :destroy]
+
   def index
-    @list = get_model.all
   end
 
   def show
-    @row = get_model.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @post }
@@ -14,11 +15,9 @@ class CrudController < ApplicationController
   end
 
   def edit
-    @row = get_model.find(params[:id])
   end
 
   def update
-    @row = get_model.find(params[:id])
     respond_to do |format|
       if @row.update_attributes(params[get_model_name])
         format.html  { redirect_to(@row,
@@ -57,7 +56,6 @@ class CrudController < ApplicationController
   end
 
   def destroy
-    @row = get_model.find(params[:id])
     @row.destroy
     respond_to do |format|
       format.html { redirect_to posts_url }
@@ -70,11 +68,12 @@ class CrudController < ApplicationController
       controller_class_name = klass.name
       plural = controller_class_name.gsub %r/Controller$/, ''
       splitted = plural.split('::')
-      const_name = Object.const_get(splitted.shift.singularize)
+      const = Object.const_get(splitted.shift.singularize)
       splitted.each do |p|
-        const_name = const_name.const_get(p.singularize)
+        # Get const not searching on parent modules
+        const = const.const_get(p.singularize, false)
       end
-      const_name
+      const
     end
 
     def get_model
@@ -83,5 +82,14 @@ class CrudController < ApplicationController
 
     def get_model_name
       get_model.to_s.underscore.gsub('/', '_')
+    end
+
+    def find_row
+      @row = get_model.find(params[:id])
+    end
+
+    def init
+      @template_row = get_model.new
+      @list = get_model.all
     end
 end

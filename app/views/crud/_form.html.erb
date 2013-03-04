@@ -1,4 +1,4 @@
-<%= form_for(@row) do |form| %>
+<%= form_for @row, :html => { :class => 'form-horizontal' } do |form| %>
   <% if @row.errors.any? %>
   <div class="area messages">
     <ul>
@@ -9,13 +9,8 @@
   </div>
   <% end %>
 
-  <% form_fields do |field| %>
-  <div>
-    <%= form.label field[:name] %>
-    <%= form.send field[:widget], field[:name] %>
-  </div>
-  <% end %>
+  <%= render 'form_fields', :form => form %>
 
-  <%= form.submit %>
+  <%= form.submit :class => 'btn' %>
 <% end %>
 

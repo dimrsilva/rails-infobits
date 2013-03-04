@@ -12,12 +12,13 @@ Infobits::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  namespace :contacts do
+  namespace :contacts, :as => 'contact' do
       resources :people
+      resources :companies
   end
 
   scope :module => "contacts" do
-    resources :contacts, :as => 'contacts_contacts'
+    resources :contacts, :as => 'contact_contacts'
   end
 
   # Sample resource route with options:

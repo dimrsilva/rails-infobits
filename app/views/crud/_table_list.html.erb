@@ -1,0 +1,36 @@
+<table class="table">
+  <thead>
+    <tr>
+      <% @template_row.table_list_columns do |h| %>
+      <th>
+        <%= h %>
+      </th>
+      <% end %>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <thead>
+    <% @list.each do |row| %>
+    <% if row == @row %>
+    <tr class="selected">
+    <% else %>
+    <tr>
+    <% end %>
+      <% row.table_list_columns do |c| %>
+      <td>
+        <%= row.send(c) %>
+      </td>
+      <% end %>
+      <td>
+        <%= link_to edit_polymorphic_url row do %>
+          <i class="icon-pencil" title="Edit"></i>
+        <% end %>
+        <%= link_to row, :method => 'destroy', :confirm => 'Are you sure?' do %>
+          <i class="icon-remove" title="Remove"></i>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </thead>
+</table>

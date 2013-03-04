@@ -8,7 +8,31 @@
 </head>
 <body>
 
-<%= yield %>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Infobits</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Controller Name</h1>
+    <%= yield %>
+  </div>
+
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Desenvolvido por <a href="https://bitbucket.org/dimrsilva" target="_blank">Anderson R. Silva</a>.</p>
+    </div>
+  </div>
 
 </body>
 </html>

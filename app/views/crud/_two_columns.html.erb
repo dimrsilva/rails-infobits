@@ -1,0 +1,19 @@
+<p>
+  <a class="btn btn-primary" href="#">Create</a>
+</p>
+<div class="row">
+  <div class="span6">
+    <div class="well">
+      <%= render 'table_list' %>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="well">
+      <% if @row == nil %>
+        No row selected
+      <% else %>
+      <%= render 'form' %>
+      <% end %>
+    </div>
+  </div>
+</div>

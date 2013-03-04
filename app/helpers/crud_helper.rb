@@ -26,4 +26,12 @@ module CrudHelper
     end
   end
 
+  def show_fields
+    @row.class.columns.each do |column|
+      if !%r/id|type|(?:creat|updat)ed_at/.match column.name 
+        yield :name => column.name, :widget => self._form_fields_map_widgets(column)
+      end
+    end
+  end
+
 end
