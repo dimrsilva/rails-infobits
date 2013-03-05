@@ -21,7 +21,8 @@
 </fieldset>
 <fieldset>
   <legend>Contact</legend>
-  <%= render 'form_fields_email', :form => form %>
+  <%= form.nested_resource :emails %>
+  <%= form.nested_resource :phones %>
 </fieldset>
 <fieldset>
   <legend>Documents</legend>

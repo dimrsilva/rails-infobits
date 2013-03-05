@@ -1,7 +1,7 @@
 class Contact::Company < Contact::Contact
   acts_as_citier
   attr_accessible :fantasy_name, :legal_name, :doc_cnpj, :doc_ie, :doc_im
-  belongs_to :contact
+  belongs_to :representant, :class_name => "Contact::Person", :foreign_key => "contact_person_id"
 
   def fantasy_name= new_val
     super new_val.strip
@@ -9,5 +9,4 @@ class Contact::Company < Contact::Contact
     self.fantasy_name
   end
 
-	# belongs_to :representant, :class => "Person", :foreign_key => "representant_id"
 end

@@ -1,0 +1,12 @@
+<div class="nested-resource control-group">
+  <%= form.label association, :class => 'control-label' %>
+  <div class="controls">
+    <%= form.fields_for association do |nested_form| %>
+    <div class="nested-resource-item">
+      <%= render "form_fields_#{association.to_s.singularize}", :form => nested_form %>
+      <%= nested_form.check_box :_destroy, :class => 'item-destroy' %>
+    </div>
+    <% end %>
+    <%= link_to_add_fields 'New item', form, :emails %>
+  </div>
+</div>

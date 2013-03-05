@@ -1,17 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  street: MyString
-  neighborhood: MyString
-  postal_code: MyString
-  city: MyString
-  state: MyString
-  country: MyString
-
-two:
-  street: MyString
-  neighborhood: MyString
-  postal_code: MyString
-  city: MyString
-  state: MyString
-  country: MyString
+# one:
+#   street: MyString
+#   neighborhood: MyString
+#   postal_code: MyString
+#   city: MyString
+#   state: MyString
+#   country: MyString

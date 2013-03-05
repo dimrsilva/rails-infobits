@@ -30,3 +30,7 @@ input, textarea, .uneditable-input {
 input.datepicker {
     width: 179px;
 }
+
+.nested-resource input.item-destroy {
+  display: none;
+}

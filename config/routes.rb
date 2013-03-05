@@ -20,7 +20,11 @@ Infobits::Application.routes.draw do
   end
 
   scope :module => "contacts" do
-    resources :contacts, :as => 'contact_contacts'
+    resources :contacts, :as => 'contact_contacts' do
+      # resources :addresses, :with => [:update, :create, :destroy]
+      # resources :phones, :with => [:update, :create, :destroy]
+      # resources :emails, :with => [:update, :create, :destroy]
+    end
   end
 
   # Sample resource route with options:

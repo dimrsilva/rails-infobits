@@ -93,8 +93,7 @@ class CrudController < ApplicationController
       load_list
     end
 
-    protected
-      def load_list
-        @list = get_model.all
-      end
+    def load_list
+      @list = get_model.all
+    end
 end

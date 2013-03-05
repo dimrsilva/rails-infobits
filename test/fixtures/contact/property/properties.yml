@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  type: 
-  label: MyString
-  value: MyString
+  id: 1
+  type:  Contact::Property::Phone
+  label: 
+  value: 38 3225 6732
+  contact_contact_id: 1
 
 two:
-  type: 
-  label: MyString
-  value: MyString
+  id: 2
+  type:  Contact::Property::Email
+  label: 
+  value: email@example.com
+  contact_contact_id: 1
