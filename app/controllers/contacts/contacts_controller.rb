@@ -8,7 +8,6 @@ class Contacts::ContactsController < CrudController
 
   protected
     def fill_aditional_properties
-      @row ||= get_model.new
       @row.emails.build
       @row.addresses.build
       @row.phones.build

@@ -2,7 +2,7 @@ class CrudController < ApplicationController
   protect_from_forgery
 
   before_filter :init
-  before_filter :find_row, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_row, :only => [:show, :edit, :update, :destroy, :new, :create]
 
   def index
   end
@@ -32,7 +32,6 @@ class CrudController < ApplicationController
   end
 
   def new
-    @row = get_model.new
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @row }
@@ -40,7 +39,7 @@ class CrudController < ApplicationController
   end
 
   def create
-    @row = get_model.new(params[get_model_name])
+    @row.attributes = params[get_model_name]
     respond_to do |format|
       if @row.save
         format.html  { redirect_to(@row,
@@ -85,7 +84,11 @@ class CrudController < ApplicationController
     end
 
     def find_row
-      @row = get_model.find(params[:id])
+      if params[:id]
+        @row = get_model.find(params[:id])
+      else
+        @row = get_model.new
+      end
     end
 
     def init
