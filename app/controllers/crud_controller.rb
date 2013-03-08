@@ -1,5 +1,6 @@
 class CrudController < ApplicationController
   protect_from_forgery
+  before_filter :authenticate_user!
 
   before_filter :init
   before_filter :find_row, :only => [:show, :edit, :update, :destroy, :new, :create]
