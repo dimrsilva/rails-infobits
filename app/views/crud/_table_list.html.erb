@@ -23,7 +23,7 @@
       </td>
       <% end %>
       <td>
-        <%= link_to edit_polymorphic_url row do %>
+        <%= link_to edit_polymorphic_url row, :page => params[:page] do %>
           <i class="icon-pencil" title="Edit"></i>
         <% end %>
         <%= link_to row, :method => 'delete', :confirm => 'Are you sure?' do %>
@@ -34,3 +34,4 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @list %>

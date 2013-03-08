@@ -56,3 +56,6 @@ gem "cancan"
 
 # Create views on database
 #gem 'rails_sql_views', git: 'git://github.com/ryanlitalien/rails_sql_views.git'
+
+# Pagination for views
+gem 'will_paginate', '~> 3.0'

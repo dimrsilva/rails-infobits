@@ -80,6 +80,10 @@ class CrudController < ApplicationController
       get_model_from_controller self.class
     end
 
+    def get_list_model
+      get_model
+    end
+
     def get_model_name
       get_model.to_s.underscore.gsub('/', '_')
     end
@@ -98,6 +102,7 @@ class CrudController < ApplicationController
     end
 
     def load_list
-      @list = get_model.all
+      @list = get_list_model.order(get_list_model.field_name)
+        .paginate(:page => params[:page], :per_page => 10)
     end
 end

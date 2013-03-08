@@ -17,6 +17,8 @@ class Contact::Contact < ActiveRecord::Base
     :foreign_key => :contact_contact_id, :dependent => :delete_all, :autosave => true
   accepts_nested_attributes_for :addresses
 
+  self.field_name = :fullname
+
   def table_list_columns
     yield :id
     yield :fullname
