@@ -98,6 +98,7 @@ class CrudController < ApplicationController
 
     def init
       @template_row = get_model.new
+      @title = t self.class.name.underscore.gsub(%r/_controller$/, '')
       load_list
     end
 

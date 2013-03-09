@@ -12,4 +12,9 @@ class Contacts::ContactsController < CrudController
     def get_list_model
       Contact::Contact
     end
+
+    def init
+      super
+      @title = t :contacts
+    end
 end

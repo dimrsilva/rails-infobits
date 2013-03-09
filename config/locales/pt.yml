@@ -1,0 +1,43 @@
+pt:
+  contacts: Contatos
+  about: Sobre
+  sign_out: Sair
+
+  edit: Editar
+  remove: Remover
+
+  create_row: "Adicionar %{row}"
+
+  date:
+    formats:
+      default: "%d/%m/%Y"
+
+  activerecord:
+    models:
+      contact/contact: Contato
+      contact/person: Pessoa Física
+      contact/company: Pessoa Jurídica
+    attributes:
+      contact/contact:
+        id: "#"
+        fullname: Nome
+        note: Nota Adicional
+      contact/person:
+        firstname: Nome
+        lastname: Sobrenome
+        birthdate: Aniversário
+        doc_cpf: CPF
+        doc_rg: RG
+      contact/company:
+        fantasy_name: Nome Fantasia
+        legal_name: Nome Jurídico
+        birthdate: Data de fundação
+        doc_cnpj: CNPJ
+        doc_ie: I.E.
+        doc_im: I.M.
+      contact/property/address:
+        street: Rua
+        neighborhood: Bairro
+        postal_code: CEP
+        state: Estado
+        country: País

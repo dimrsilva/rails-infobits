@@ -3,7 +3,7 @@
     <tr>
       <% @template_row.table_list_columns do |h| %>
       <th>
-        <%= h %>
+        <%= @template_row.class.human_attribute_name h %>
       </th>
       <% end %>
       <th>
@@ -24,10 +24,10 @@
       <% end %>
       <td>
         <%= link_to edit_polymorphic_url row, :page => params[:page] do %>
-          <i class="icon-pencil" title="Edit"></i>
+          <i class="icon-pencil" title="<%= t :edit %>"></i>
         <% end %>
         <%= link_to row, :method => 'delete', :confirm => 'Are you sure?' do %>
-          <i class="icon-remove" title="Remove"></i>
+          <i class="icon-remove" title="<%= t :remove %>"></i>
         <% end %>
       </td>
     </tr>
