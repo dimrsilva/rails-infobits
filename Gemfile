@@ -59,3 +59,6 @@ gem "cancan"
 
 # Pagination for views
 gem 'will_paginate', '~> 3.0'
+
+# Validate dates
+gem 'validates_timeliness', '~> 3.0'

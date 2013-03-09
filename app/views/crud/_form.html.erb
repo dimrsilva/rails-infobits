@@ -1,9 +1,12 @@
 <%= form_for @row, :html => { :class => 'form-horizontal' }, :builder => CrudHelper::Forms::FormBuilder do |form| %>
   <% if @row.errors.any? %>
-  <div class="area messages">
+  <div class="alert alert-error">
+    <h4><%= t :validation_errors %></h4>
     <ul>
     <% @row.errors.full_messages.each do |msg| %>
-      <li class="error"><%= msg %></li>
+      <li>
+        <%= msg %>
+      </li>
     <% end %>
     </ul>
   </div>

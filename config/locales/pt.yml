@@ -7,6 +7,7 @@ pt:
   remove: Remover
 
   create_row: "Adicionar %{row}"
+  validation_errors: Erros de validação
 
   date:
     formats:
@@ -41,3 +42,9 @@ pt:
         postal_code: CEP
         state: Estado
         country: País
+    errors:
+      messages:
+        blank: não pode ser vazio
+        too_short: "deve ter no mínimo %{count} caracteres"
+        invalid_date: deve ser inserido no formato dd/mm/yyyy
+

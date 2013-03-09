@@ -15,9 +15,14 @@ class Contact::Contact < ActiveRecord::Base
   
   has_many :addresses, :class_name => 'Contact::Property::Address',
     :foreign_key => :contact_contact_id, :dependent => :delete_all, :autosave => true
-  accepts_nested_attributes_for :addresses
+  accepts_nested_attributes_for :addresses, :reject_if => :reject_empty_addresses, :allow_destroy => true
 
   self.field_name = :fullname
+
+  validates_associated :emails
+  validates_associated :phones
+  validates_associated :addresses
+  validates_date :birthdate
 
   def table_list_columns
     yield :id
@@ -27,5 +32,9 @@ class Contact::Contact < ActiveRecord::Base
   protected
     def reject_empty_properties prop
       prop[:value].strip.blank?
+    end
+
+    def reject_empty_addresses address
+      address[:street].strip.blank?
     end
 end

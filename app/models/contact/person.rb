@@ -2,6 +2,8 @@ class Contact::Person < Contact::Contact
   acts_as_citier
 
   attr_accessible :prefix, :firstname, :middlename, :lastname, :doc_cpf, :doc_rg 
+
+  validates :firstname, :presence => true, :length => {:minimum => 3}
   
   def prefix= new_val
     super new_val.strip
