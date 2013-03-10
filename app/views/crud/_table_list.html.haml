@@ -1,0 +1,22 @@
+%table.table.table-hover
+  %thead
+    %tr
+      - @template_row.table_list_columns do |h|
+        %th
+          = @template_row.class.human_attribute_name h
+      %th
+  %tbody
+    - @list.each do |row|
+      - if row == @row
+        %tr.selected
+      - else
+        %tr
+      - row.table_list_columns do |c|
+        %td
+          = row.send(c)
+      %td
+        = link_to edit_polymorphic_url row, :page => params[:page] do
+          %i.icon-pencil{:title => t(:edit)}
+        = link_to row, :method => 'delete', :confirm => 'Are you sure?' do
+          %i.icon-remove{:title => t(:remove)}
+= will_paginate @list

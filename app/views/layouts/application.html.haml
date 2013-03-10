@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %title Infobits
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{:href => "#"} Infobits
+          .nav-collapse.collapse
+            %ul.nav
+              = link_nav t(:contacts), contact_contacts_path
+              = link_nav t("contacts/groups"), contact_groups_path
+            - if user_signed_in?
+              %p.navbar-text.pull-right
+                Signed in as #{current_user.email}.
+                \#{link_to t(:sign_out), destroy_user_session_path, :method => 'delete'}
+          / /.nav-collapse
+    .container
+      %h1= @title
+      = yield
+    #footer
+      .container
+        %p.muted.credit
+          Desenvolvido por
+          = succeed "." do
+            %a{:href => "https://bitbucket.org/dimrsilva", :target => "_blank"} Anderson R. Silva

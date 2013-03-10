@@ -1,0 +1,34 @@
+%fieldset
+  %legend Briefing
+  .control-group
+    = form.label :fantasy_name, :class => 'control-label'
+    .controls
+      = form.text_field :fantasy_name
+  .control-group
+    = form.label :legal_name, :class => 'control-label'
+    .controls
+      = form.text_field :legal_name
+  .control-group
+    = form.label :note, :class => 'control-label'
+    .controls
+      = form.text_area :note
+  = render 'form_groups', :form => form
+%fieldset
+  %legend Contact
+  = form.nested_resource :emails
+  = form.nested_resource :phones
+  = form.nested_resource :addresses
+%fieldset
+  %legend Documents
+  .control-group
+    = form.label :doc_cnpj, :class => 'control-label'
+    .controls
+      = form.text_field :doc_cnpj
+  .control-group
+    = form.label :doc_ie, :class => 'control-label'
+    .controls
+      = form.text_field :doc_ie
+  .control-group
+    = form.label :doc_im, :class => 'control-label'
+    .controls
+      = form.text_field :doc_im

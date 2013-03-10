@@ -1,0 +1,5 @@
+- form_fields do |field|
+  .control-group
+    = form.label field[:name], :class => 'control-label'
+    .controls
+      = form.send field[:widget], field[:name]

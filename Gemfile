@@ -62,3 +62,6 @@ gem 'will_paginate', '~> 3.0'
 
 # Validate dates
 gem 'validates_timeliness', '~> 3.0'
+
+# Enable haml engine and generate haml files
+gem "haml-rails"

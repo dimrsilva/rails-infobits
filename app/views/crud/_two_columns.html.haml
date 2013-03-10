@@ -1,0 +1,10 @@
+= render 'two_columns_actions'
+.row
+  .span6
+    = render 'table_list'
+  .span6
+    .well
+      - if @row == nil
+        No row selected
+      - else
+        = render 'form'
