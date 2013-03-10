@@ -1,5 +1,6 @@
 pt:
   contacts: Contatos
+  contacts/groups: Grupos
   about: Sobre
   sign_out: Sair
 
@@ -18,11 +19,13 @@ pt:
       contact/contact: Contato
       contact/person: Pessoa Física
       contact/company: Pessoa Jurídica
+      contact/group: Grupo
     attributes:
       contact/contact:
         id: "#"
         fullname: Nome
         note: Nota Adicional
+        groups: Grupos
       contact/person:
         firstname: Nome
         lastname: Sobrenome
@@ -42,6 +45,8 @@ pt:
         postal_code: CEP
         state: Estado
         country: País
+      contact/group:
+        name: Nome
     errors:
       messages:
         blank: não pode ser vazio

@@ -4,6 +4,7 @@ class CrudController < ApplicationController
 
   before_filter :init
   before_filter :find_row, :only => [:show, :edit, :update, :destroy, :new, :create]
+  before_filter :process_form, :only => [:show, :edit, :new]
 
   def index
   end
@@ -25,6 +26,7 @@ class CrudController < ApplicationController
                       :notice => 'Row was successfully updated.') }
         format.json  { head :no_content }
       else
+        process_form
         format.html  { render :action => "edit" }
         format.json  { render :json => @row.errors,
                       :status => :unprocessable_entity }
@@ -48,6 +50,7 @@ class CrudController < ApplicationController
         format.json  { render :json => @row,
                       :status => :created, :location => @row }
       else
+        process_form
         format.html  { render :action => "new" }
         format.json  { render :json => @row.errors,
                       :status => :unprocessable_entity }
@@ -105,5 +108,8 @@ class CrudController < ApplicationController
     def load_list
       @list = get_list_model.order(get_list_model.field_name)
         .paginate(:page => params[:page], :per_page => 10)
+    end
+
+    def process_form
     end
 end

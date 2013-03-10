@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304052916) do
+ActiveRecord::Schema.define(:version => 20130309212552) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -57,6 +57,21 @@ ActiveRecord::Schema.define(:version => 20130304052916) do
     t.text     "note"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "contact_groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "contact_contacts_groups", :force => true do |t|
+    t.integer "contact_contact_id"
+    t.integer "contact_group_id"
+    t.index ["contact_contact_id"], :name => "fk__contact_contacts_groups_contact_contact_id"
+    t.index ["contact_group_id"], :name => "fk__contact_contacts_groups_contact_group_id"
+    t.foreign_key ["contact_contact_id"], "contact_contacts", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_contact_contacts_groups_contact_contact_id"
+    t.foreign_key ["contact_group_id"], "contact_groups", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_contact_contacts_groups_contact_group_id"
   end
 
   create_table "contact_property_addresses", :force => true do |t|

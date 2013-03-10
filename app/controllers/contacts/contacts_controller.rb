@@ -1,7 +1,5 @@
 class Contacts::ContactsController < CrudController
 
-  before_filter :fill_aditional_properties, :only => [:new, :edit, :show]
-
   protected
     def fill_aditional_properties
       @row.emails.build
@@ -16,5 +14,11 @@ class Contacts::ContactsController < CrudController
     def init
       super
       @title = t :contacts
+    end
+
+    def process_form
+      super
+      @contact_groups = Contact::Group.all
+      fill_aditional_properties
     end
 end

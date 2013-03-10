@@ -17,6 +17,7 @@ Infobits::Application.routes.draw do
   namespace :contacts, :as => 'contact' do
       resources :people
       resources :companies
+      resources :groups
   end
 
   scope :module => "contacts" do
