@@ -6,6 +6,7 @@ pt:
 
   edit: Editar
   remove: Remover
+  search: Buscar
 
   create_row: "Adicionar %{row}"
   validation_errors: Erros de validação

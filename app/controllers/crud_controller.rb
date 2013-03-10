@@ -107,6 +107,7 @@ class CrudController < ApplicationController
 
     def load_list
       @list = get_list_model.order(get_list_model.field_name)
+        .where("#{get_list_model.field_name} LIKE ?", "%#{params[:q]}%")
         .paginate(:page => params[:page], :per_page => 10)
     end
 

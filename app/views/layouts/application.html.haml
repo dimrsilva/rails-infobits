@@ -19,8 +19,11 @@
                 Signed in as #{current_user.email}.
                 \#{link_to t(:sign_out), destroy_user_session_path, :method => 'delete'}
           / /.nav-collapse
+    .top-effect
+      .container
+        %h1= @title
+        = render 'action_buttons'
     .container
-      %h1= @title
       = yield
     #footer
       .container
