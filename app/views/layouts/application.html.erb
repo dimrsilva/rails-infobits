@@ -14,12 +14,8 @@
         <a class="brand" href="#">Infobits</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="active">
-              <%= link_to t(:contacts), Contact::Contact %>
-            </li>
-            <li>
-              <%= link_to t :about %>
-            </li>
+            <%= link_nav t(:contacts), contact_contacts_path %>
+            <%= link_nav t("contacts/groups"), contact_groups_path %>
           </ul>
           <% if user_signed_in? %>
           <p class="navbar-text pull-right">

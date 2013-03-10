@@ -48,6 +48,15 @@ pt:
       contact/group:
         name: Nome
     errors:
+      models:
+        contact/property/email:
+          attributes:
+            value:
+              invalid: deve ser um email válido
+        contact/contact:
+          attributes:
+            emails:
+              invalid: tem valores inválidos
       messages:
         blank: não pode ser vazio
         too_short: "deve ter no mínimo %{count} caracteres"
