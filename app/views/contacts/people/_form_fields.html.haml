@@ -15,7 +15,7 @@
   .control-group
     = form.label :birthdate, :class => 'control-label'
     .controls
-      = form.text_field :birthdate
+      = form.date_field :birthdate
   = render 'form_groups', :form => form
 %fieldset
   %legend Contact

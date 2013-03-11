@@ -29,12 +29,16 @@ form textarea {
 input, textarea, .uneditable-input {
     width: 206px;
 }
+.input-append input,
 input.datepicker {
     width: 179px;
 }
 
 .nested-resource input.item-destroy {
   display: none;
+}
+.nested-resource-item {
+  padding-bottom: 12px;
 }
 
 .translation_missing {
