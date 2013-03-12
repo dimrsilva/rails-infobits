@@ -9,6 +9,10 @@ gem 'rails', '3.2.12'
 gem 'mysql2'
 gem 'pg' #pg gem, for use in heroku
 
+# rspec for testing
+group :development, :test do
+  gem 'rspec-rails'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
