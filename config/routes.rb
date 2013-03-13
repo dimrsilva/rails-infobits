@@ -14,6 +14,10 @@ Infobits::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  namespace :admin do
+      resources :users
+  end
+
   namespace :contacts, :as => 'contact' do
       resources :people
       resources :companies

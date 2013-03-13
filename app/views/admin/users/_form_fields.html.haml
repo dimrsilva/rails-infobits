@@ -1,0 +1,14 @@
+%fieldset
+  %legend User
+  .control-group
+    = form.label :email, :class => 'control-label'
+    .controls
+      = form.email_field :email, :autocomplete => :off
+  .control-group
+    = form.label :password, :class => 'control-label'
+    .controls
+      = form.password_field :password, :autocomplete => :off
+  .control-group
+    = form.label :password_confirmation, :class => 'control-label'
+    .controls
+      = form.password_field :password_confirmation, :autocomplete => :off
