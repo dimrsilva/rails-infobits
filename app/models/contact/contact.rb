@@ -22,17 +22,10 @@ class Contact::Contact < ActiveRecord::Base
     :association_foreign_key => :contact_group_id, :join_table => :contact_contacts_groups
   accepts_nested_attributes_for :groups
 
-  self.field_name = :fullname
-
   validates_associated :emails
   validates_associated :phones
   validates_associated :addresses
   validates_date :birthdate, :allow_blank => true
-
-  def table_list_columns
-    yield :id
-    yield :fullname
-  end
 
   protected
     def reject_empty_properties prop

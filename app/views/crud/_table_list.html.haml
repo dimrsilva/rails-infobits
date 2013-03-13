@@ -4,7 +4,7 @@
 %table.table.table-hover
   %thead
     %tr
-      - @template_row.table_list_columns do |h|
+      - @table_list_columns.each do |h|
         %th
           = @template_row.class.human_attribute_name h
       %th
@@ -14,7 +14,7 @@
         %tr.selected
       - else
         %tr
-      - row.table_list_columns do |c|
+      - @table_list_columns.each do |c|
         %td
           = row.send(c)
       %td

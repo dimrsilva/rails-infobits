@@ -105,10 +105,28 @@ class CrudController < ApplicationController
       load_list
     end
 
+    def filter_list q
+      @list.where("label LIKE '%#{q}%'")
+    end
+
+    def order_list
+      @list.order(:id)
+    end
+
+    def paginate_list
+      @list.paginate(:page => params[:page], :per_page => 10)
+    end
+
+    def load_table_list_columns
+      @table_list_columns = [:id, :label]
+    end
+
     def load_list
-      @list = get_list_model.order(get_list_model.field_name)
-        .where("#{get_list_model.field_name} LIKE ?", "%#{params[:q]}%")
-        .paginate(:page => params[:page], :per_page => 10)
+      @list = get_list_model
+      @list = filter_list params[:q]
+      @list = order_list
+      @list = paginate_list
+      load_table_list_columns
     end
 
     def process_form

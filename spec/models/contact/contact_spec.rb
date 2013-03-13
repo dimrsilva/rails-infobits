@@ -27,8 +27,8 @@ describe Contact::Contact do
   it "should accept group ids on mass assignment" do
     mock_model Contact::Group
     groups = [
-      stub_model(Contact::Group, :id => 1, :name => "Test"),
-      stub_model(Contact::Group, :id => 2, :name => "Test 2"),
+      stub_model(Contact::Group, :id => 1, :note => "Test"),
+      stub_model(Contact::Group, :id => 2, :note => "Test 2"),
     ]
     Contact::Group.stub!(:find).with([1, 2]).and_return(groups)
 
