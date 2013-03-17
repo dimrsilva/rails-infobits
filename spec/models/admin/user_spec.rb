@@ -31,8 +31,16 @@ describe Admin::User do
 
     @user.password = 'test'
     @user.password_confirmation = 'test'
-    @user.should_not be_valid
+    @user.should_not be_valid #cause is missing email
     @user.should have(:no).errors_on(:password)
+  end
+
+  it "should require email field" do
+    @user.should_not be_valid
+    @user.should have(1).errors_on(:email) #required
+    @user.email = 'invalid email'
+    @user.should_not be_valid
+    @user.should have(1).errors_on(:email) #invalid email
   end
 
   it "should not update password if empty string is passed" do

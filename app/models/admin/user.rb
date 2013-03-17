@@ -9,7 +9,7 @@ class Admin::User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   validates_format_of :email, :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
-  validates :email, :uniqueness => true
+  validates :email, :uniqueness => true, :presence => true
 
   validates :password, :confirmation => true
 end

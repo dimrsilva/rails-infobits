@@ -35,7 +35,15 @@ test:
   port: 3306
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  # adapter: sqlite3
+  # database: db/production.sqlite3
+  # pool: 5
+  # timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  database: infobits_dev
   pool: 5
-  timeout: 5000
+  username: root
+  password: "123"
+  server: 127.0.0.1
+  port: 3306

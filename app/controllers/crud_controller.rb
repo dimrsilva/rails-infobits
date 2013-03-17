@@ -97,6 +97,8 @@ class CrudController < ApplicationController
       else
         @row = get_model.new
       end
+    rescue ActiveRecord::RecordNotFound
+      render "/errors/404", :status => 404
     end
 
     def init
@@ -123,7 +125,7 @@ class CrudController < ApplicationController
 
     def load_list
       @list = get_list_model
-      @list = filter_list params[:q]
+      @list = filter_list params[:q] unless params[:q] == nil
       @list = order_list
       @list = paginate_list
       load_table_list_columns
