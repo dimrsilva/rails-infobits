@@ -1,4 +1,9 @@
 class Contact::Contact < ActiveRecord::Base
+
+  def self.label_field
+    :fullname
+  end
+
   acts_as_citier
   attr_accessible :fullname, :birthdate, :note,
     :emails, :emails_attributes,

@@ -21,12 +21,4 @@ class Contacts::ContactsController < CrudController
       @contact_groups = Contact::Group.all
       fill_aditional_properties
     end
-
-    def filter_list q
-      @list.where("fullname LIKE '%#{q}%'")
-    end
-
-    def load_table_list_columns
-      @table_list_columns = [:id, :fullname]
-    end
 end

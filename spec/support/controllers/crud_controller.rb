@@ -56,6 +56,8 @@ shared_examples_for CrudController do
         get :index, :page => 2
         assigns[:list].length.should eql 5
       end
+
+      it "should filter results"
     end
 
     context "accessing unavailable data (GET)" do

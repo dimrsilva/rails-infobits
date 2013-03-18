@@ -104,23 +104,24 @@ class CrudController < ApplicationController
     def init
       @template_row = get_model.new
       @title = t self.class.name.underscore.gsub(%r/_controller$/, '')
+      @per_page = 10
       load_list
     end
 
     def filter_list q
-      @list.where("label LIKE '%#{q}%'")
+      @list.where("#{get_model.label_field} LIKE '%#{q}%'")
     end
 
     def order_list
-      @list.order(:id)
+      @list.order(get_model.label_field)
     end
 
     def paginate_list
-      @list.paginate(:page => params[:page], :per_page => 10)
+      @list.paginate(:page => params[:page], :per_page => @per_page)
     end
 
     def load_table_list_columns
-      @table_list_columns = [:id, :label]
+      @table_list_columns = [:id, get_model.label_field]
     end
 
     def load_list
