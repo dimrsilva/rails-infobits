@@ -1,18 +1,13 @@
 %fieldset
   %legend Briefing
-  .control-group
-    = form.label :fantasy_name, :class => 'control-label'
-    .controls
-      = form.text_field :fantasy_name
-  .control-group
-    = form.label :legal_name, :class => 'control-label'
-    .controls
-      = form.text_field :legal_name
-  .control-group
-    = form.label :note, :class => 'control-label'
-    .controls
-      = form.text_area :note
-  = render 'form_groups', :form => form
+  .row
+    .span5
+      = form.labeled_input :fantasy_name
+      = form.labeled_input :legal_name
+      = form.labeled_input :note, :text_area
+      = form.labeled_input :representant
+    .span5
+      = render 'form_groups', :form => form
 %fieldset
   %legend Contact
   = form.nested_resource :emails
@@ -20,15 +15,8 @@
   = form.nested_resource :addresses
 %fieldset
   %legend Documents
-  .control-group
-    = form.label :doc_cnpj, :class => 'control-label'
-    .controls
-      = form.text_field :doc_cnpj
-  .control-group
-    = form.label :doc_ie, :class => 'control-label'
-    .controls
-      = form.text_field :doc_ie
-  .control-group
-    = form.label :doc_im, :class => 'control-label'
-    .controls
-      = form.text_field :doc_im
+  .row
+    .span5
+      = form.labeled_input :doc_cnpj
+      = form.labeled_input :doc_ie
+      = form.labeled_input :doc_im

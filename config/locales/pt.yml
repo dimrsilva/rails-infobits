@@ -4,9 +4,11 @@ pt:
   about: Sobre
   sign_out: Sair
 
+  home: Página Inicial
   edit: Editar
   remove: Remover
   search: Buscar
+  create: Criar
 
   create_row: "Adicionar %{row}"
   validation_errors: Erros de validação

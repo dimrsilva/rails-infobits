@@ -21,10 +21,20 @@
           / /.nav-collapse
     .top-effect
       .container
-        %h1= @title
-        = render 'action_buttons'
+        - if @breadcrumbs
+          %ul.breadcrumb
+            - @breadcrumbs[0..-2].each do |txt, url|
+              %li= link_to txt, url
+              %span.divider /
+            %li.active= @breadcrumbs.last.first
+        %h1.title= @title
+        %span.subtitle= @subtitle
+        /= render 'action_buttons'
     .container
-      = yield
+      .row
+        .span10.content
+          = yield
+        .span2.sidebar sidebar
     #footer
       .container
         %p.muted.credit

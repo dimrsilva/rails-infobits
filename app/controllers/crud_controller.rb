@@ -5,14 +5,16 @@ class CrudController < ApplicationController
   before_filter :init
   before_filter :find_row, :only => [:show, :edit, :update, :destroy, :new, :create]
   before_filter :process_form, :only => [:show, :edit, :new]
+  before_filter :load_breadcrumbs
 
   def index
+    load_list
   end
 
   def show
     respond_to do |format|
       format.html  # show.html.erb
-      format.json  { render :json => @post }
+      format.json  { render :json => @row }
     end
   end
 
@@ -88,7 +90,7 @@ class CrudController < ApplicationController
     end
 
     def get_model_name
-      get_model.to_s.underscore.gsub('/', '_')
+      get_model.model_name.underscore.gsub('/', '_')
     end
 
     def find_row
@@ -103,9 +105,8 @@ class CrudController < ApplicationController
 
     def init
       @template_row = get_model.new
-      @title = t self.class.name.underscore.gsub(%r/_controller$/, '')
+      @title = I18n.t self.class.name.underscore.gsub(%r/_controller$/, '')
       @per_page = 10
-      load_list
     end
 
     def filter_list q
@@ -133,5 +134,17 @@ class CrudController < ApplicationController
     end
 
     def process_form
+    end
+
+    def load_breadcrumbs
+      add_breadcrumb I18n.t(:home), root_url
+      add_breadcrumb @title, polymorphic_url(get_model)
+      if @row
+        if @row.new_record?
+          add_breadcrumb I18n.t(:create), new_polymorphic_url(get_model)
+        else
+          add_breadcrumb I18n.t(:edit), edit_polymorphic_url(@row)
+        end
+      end
     end
 end

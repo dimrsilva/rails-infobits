@@ -1,0 +1,23 @@
+form textarea {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 20px;
+  max-height: 180px;
+}
+
+input[type="text"], input[type="password"], input[type="email"], .ui-autocomplete-input, textarea, .uneditable-input {
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    color: #808080;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 4px;
+}
+
+.nested-resource input.item-destroy {
+  display: none;
+}
+.nested-resource-item {
+  padding-bottom: 12px;
+}

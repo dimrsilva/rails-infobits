@@ -12,5 +12,14 @@ module CrudHelper::Forms
     def nested_resource association
       @template.render "form_fields_nested_resources", :association => association, :form => self
     end
+
+    def labeled_input name, type = 'text_field'
+      @template.content_tag(:div, :class => "control-group control-group-#{name}") do
+        label(name, :class => 'control-label') +
+        @template.content_tag(:div, :class => 'controls') do
+          send(type, name, :class => 'input-block-level')
+        end
+      end
+    end
   end
 end

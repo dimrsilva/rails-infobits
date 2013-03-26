@@ -12,4 +12,8 @@ class Admin::User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true
 
   validates :password, :confirmation => true
+
+  def self.label_field
+    :email
+  end
 end

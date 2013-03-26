@@ -11,36 +11,3 @@
  *= require_self
  *= require_tree .
  */
-.top-effect {
-  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-  background: #CCC;
-  margin-bottom: 20px;
-}
-
-form textarea {
-  width: 206px;
-  min-width: 206px;
-  max-width: 206px;
-  height: 60px;
-  min-height: 20px;
-  max-height: 180px;
-}
-
-input, textarea, .uneditable-input {
-    width: 206px;
-}
-.input-append input,
-input.datepicker {
-    width: 179px;
-}
-
-.nested-resource input.item-destroy {
-  display: none;
-}
-.nested-resource-item {
-  padding-bottom: 12px;
-}
-
-.translation_missing {
-  color: red;
-}
