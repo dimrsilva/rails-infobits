@@ -27,9 +27,12 @@
               %li= link_to txt, url
               %span.divider /
             %li.active= @breadcrumbs.last.first
-        %h1.title= @title
-        %span.subtitle= @subtitle
-        /= render 'action_buttons'
+        .row
+          .span6
+            %h1.title= @title
+            %span.subtitle= @subtitle
+          .span6.text-right
+            = render 'action_buttons'
     .container
       .row
         .span10.content
