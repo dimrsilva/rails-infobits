@@ -13,8 +13,11 @@ gem 'pg' #pg gem, for use in heroku
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
   gem 'factory_girl'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
 end
 
 # Gems used only for assets and not required

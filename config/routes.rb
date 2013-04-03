@@ -18,14 +18,14 @@ Infobits::Application.routes.draw do
       resources :users
   end
 
-  namespace :contacts, :as => 'contact' do
-      resources :people
-      resources :companies
-      resources :groups
+  namespace :contacts, :path => 'contatos', :as => 'contact' do
+      resources :people, :path => 'pessoas_fisicas'
+      resources :companies, :path => 'pessoas_juridicas'
+      resources :groups, :path => 'grupos'
   end
 
   scope :module => "contacts" do
-    resources :contacts, :as => 'contact_contacts' do
+    resources :contacts, :path => 'contatos', :as => 'contact_contacts' do
       # resources :addresses, :with => [:update, :create, :destroy]
       # resources :phones, :with => [:update, :create, :destroy]
       # resources :emails, :with => [:update, :create, :destroy]
