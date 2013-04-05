@@ -36,4 +36,11 @@ describe Contact::Contact do
     @contact.attributes = mass_assign
     @contact.groups.length.should eql 2
   end
+
+  it "should return fullname with id when called to_s" do
+    @contact.stub!(:fullname).and_return("Maria Pereira")
+    @contact.to_s.should eql "Maria Pereira [id:null]"
+    @contact.save
+    @contact.to_s.should eql "Maria Pereira [id:#{@contact.id}]"
+  end
 end

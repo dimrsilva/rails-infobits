@@ -8,7 +8,7 @@ Dado %r/^que eu esteja logado como administrador$/ do
   click_button 'Sign in'
 end
 
-Dado %r/^que eu visite a url (.*)$/ do |page|
+Dado %r/^que eu visite a url "([^"]*)"$/ do |page|
   visit page
 end
  

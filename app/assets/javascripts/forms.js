@@ -1,5 +1,5 @@
 (function($) {
-    $(document).ready(function() {
+    $(window).load(function() {
         $('form').on('click', '.add-fields', function(event) {
             time = new Date().getTime();
             regexp = new RegExp($(this).data('id'), 'g');

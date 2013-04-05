@@ -39,6 +39,7 @@ pt:
         fantasy_name: Nome Fantasia
         legal_name: Nome Jurídico
         birthdate: Data de fundação
+        representant: Representante
         doc_cnpj: CNPJ
         doc_ie: I.E.
         doc_im: I.M.

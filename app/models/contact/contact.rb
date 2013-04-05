@@ -32,6 +32,10 @@ class Contact::Contact < ActiveRecord::Base
   validates_associated :addresses
   validates_date :birthdate, :allow_blank => true
 
+  def to_s
+    "#{fullname} [id:#{id||'null'}]"
+  end
+
   protected
     def reject_empty_properties prop
       prop[:value].strip.blank?

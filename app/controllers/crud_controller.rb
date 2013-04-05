@@ -9,6 +9,10 @@ class CrudController < ApplicationController
 
   def index
     load_list
+    respond_to do |format|
+      format.html  # index.html.erb
+      format.json  { render :json => @list }
+    end
   end
 
   def show
@@ -95,7 +99,7 @@ class CrudController < ApplicationController
 
     def find_row
       if params[:id]
-        @row = get_model.find(params[:id])
+        @row = get_model.find(params[:id].to_i)
       else
         @row = get_model.new
       end
