@@ -12,11 +12,14 @@ Funcionalidade: Cadastro de Contatos
     Então eu devo ver "Contatos" no título
     E eu devo ver o link "Adicionar Pessoa Física"
     E eu devo ver o link "Adicionar Pessoa Jurídica"
+    E eu devo ver o menu "Contatos"
+    E eu devo ver o menu "Projetos"
+    E eu devo ver o menu "Grupos"
 
   Cenário: Acessar contatos organizados por páginas
     Dado que existam 15 contatos cadastrados
     E que eu visite a url "/contatos"
-    Então eu devo ver um link para a segunda página
+    Então eu devo ver um link para a 2º página
 
   @javascript
   Cenário: Utilizar auto-completar do campo de Contatos

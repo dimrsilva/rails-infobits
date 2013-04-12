@@ -11,6 +11,6 @@ Dado %r/^que exista um contato com nome "([^"]*)"$/ do |name|
   Contact::Contact.create :fullname => name
 end
 
-Então %r/^eu devo ver um link para a segunda página$/ do
-  page.find(".pagination").find_link "2"
+Então %r/^eu devo ver um link para a (\d+)º página$/ do |p|
+  page.find(".pagination").find_link p
 end

@@ -1,5 +1,9 @@
 # encoding: utf-8
 
+Dado %r/^que eu visite a url "([^"]*)"$/ do |page|
+  visit page
+end
+
 Quando %r/eu preencher o campo "([^"]*)" com o valor "([^"]*)"/ do |field, value|
   fill_in field, :with => value
 end
