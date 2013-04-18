@@ -46,8 +46,7 @@ shared_examples_for CrudController do
 
       it "should paginate rows on index" do
         15.times do
-          @row = @model.new
-          @row.save
+          @row = FactoryGirl.create(@model.model_name.underscore)
           @row.should_not be_new_record
         end
         @model.all.count.should eql 15

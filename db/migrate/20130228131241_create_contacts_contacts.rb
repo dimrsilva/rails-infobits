@@ -1,8 +1,8 @@
 class CreateContactsContacts < ActiveRecord::Migration
   def self.up
     create_table :contact_contacts do |t|
-    	t.string :type #Used by citier
-    	t.string :fullname, :nil => false
+      t.string :type
+    	t.string :fullname
     	t.date   :birthdate
     	t.text   :note
       t.timestamps

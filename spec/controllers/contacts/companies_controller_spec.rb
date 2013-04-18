@@ -10,7 +10,7 @@ describe Contacts::CompaniesController do
       sign_in @user
     end
 
-    it "should convert representant string to object" do
+    it "should convert representant string to id" do
       @company = Contact::Company.new
       @company.stub!(:id).and_return(1)
       Contact::Company.stub!(:find).with(1).and_return(@company)

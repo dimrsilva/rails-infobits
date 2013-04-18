@@ -6,7 +6,7 @@ class CreateContactsCompanies < ActiveRecord::Migration
 			t.string :doc_cnpj
 			t.string :doc_ie
 			t.string :doc_im
-      t.references :contact_person
+      t.integer :representant_id, :references => :contact_people
     end
     create_citier_view Contact::Company
   end

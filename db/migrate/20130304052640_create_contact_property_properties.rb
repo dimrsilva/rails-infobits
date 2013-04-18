@@ -4,7 +4,7 @@ class CreateContactPropertyProperties < ActiveRecord::Migration
       t.string :type
       t.string :label
       t.string :value
-      t.references :contact_contact
+      t.integer :contact_contact_id
 
       t.timestamps
     end

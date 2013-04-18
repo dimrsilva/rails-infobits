@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(:version => 20130417215103) do
     t.string  "doc_cnpj"
     t.string  "doc_ie"
     t.string  "doc_im"
-    t.integer "contact_person_id"
-    t.index ["contact_person_id"], :name => "fk__contact_companies_contact_person_id"
-    t.foreign_key ["contact_person_id"], "contact_people", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_contact_companies_contact_person_id"
+    t.integer "representant_id"
+    t.index ["representant_id"], :name => "fk__contact_companies_representant_id"
+    t.foreign_key ["representant_id"], "contact_people", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_contact_companies_representant_id"
   end
 
   create_table "contact_contacts", :force => true do |t|
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(:version => 20130417215103) do
   end
 
   create_table "contact_contacts_groups", :force => true do |t|
-    t.integer "contact_contact_id"
-    t.integer "contact_group_id"
+    t.integer "contact_contact_id", :null => false
+    t.integer "contact_group_id",   :null => false
     t.index ["contact_contact_id"], :name => "fk__contact_contacts_groups_contact_contact_id"
     t.index ["contact_group_id"], :name => "fk__contact_contacts_groups_contact_group_id"
     t.foreign_key ["contact_contact_id"], "contact_contacts", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_contact_contacts_groups_contact_contact_id"
@@ -106,17 +106,17 @@ ActiveRecord::Schema.define(:version => 20130417215103) do
     t.text     "description"
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "contact_person_id"
-    t.integer  "domain_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.index ["contact_person_id"], :name => "fk__projects_projects_contact_person_id"
-    t.index ["domain_id"], :name => "fk__projects_projects_domain_id"
-    t.foreign_key ["contact_person_id"], "contact_people", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_projects_contact_person_id"
-    t.foreign_key ["domain_id"], "domains", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_projects_domain_id"
+    t.integer  "manager_id"
+    t.integer  "status_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.index ["manager_id"], :name => "fk__projects_projects_manager_id"
+    t.index ["status_id"], :name => "fk__projects_projects_status_id"
+    t.foreign_key ["manager_id"], "contact_contacts", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_projects_manager_id"
+    t.foreign_key ["status_id"], "domains", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_projects_status_id"
   end
 
-  create_view "view_contact_companies", "select `contact_contacts`.`id` AS `id`,`contact_contacts`.`type` AS `type`,`contact_contacts`.`fullname` AS `fullname`,`contact_contacts`.`birthdate` AS `birthdate`,`contact_contacts`.`note` AS `note`,`contact_contacts`.`created_at` AS `created_at`,`contact_contacts`.`updated_at` AS `updated_at`,`contact_companies`.`fantasy_name` AS `fantasy_name`,`contact_companies`.`legal_name` AS `legal_name`,`contact_companies`.`doc_cnpj` AS `doc_cnpj`,`contact_companies`.`doc_ie` AS `doc_ie`,`contact_companies`.`doc_im` AS `doc_im`,`contact_companies`.`contact_person_id` AS `contact_person_id` from `contact_contacts` join `contact_companies` where (`contact_contacts`.`id` = `contact_companies`.`id`)", :force => true
+  create_view "view_contact_companies", "select `contact_contacts`.`id` AS `id`,`contact_contacts`.`type` AS `type`,`contact_contacts`.`fullname` AS `fullname`,`contact_contacts`.`birthdate` AS `birthdate`,`contact_contacts`.`note` AS `note`,`contact_contacts`.`created_at` AS `created_at`,`contact_contacts`.`updated_at` AS `updated_at`,`contact_companies`.`fantasy_name` AS `fantasy_name`,`contact_companies`.`legal_name` AS `legal_name`,`contact_companies`.`doc_cnpj` AS `doc_cnpj`,`contact_companies`.`doc_ie` AS `doc_ie`,`contact_companies`.`doc_im` AS `doc_im`,`contact_companies`.`representant_id` AS `representant_id` from `contact_contacts` join `contact_companies` where (`contact_contacts`.`id` = `contact_companies`.`id`)", :force => true
   create_view "view_contact_people", "select `contact_contacts`.`id` AS `id`,`contact_contacts`.`type` AS `type`,`contact_contacts`.`fullname` AS `fullname`,`contact_contacts`.`birthdate` AS `birthdate`,`contact_contacts`.`note` AS `note`,`contact_contacts`.`created_at` AS `created_at`,`contact_contacts`.`updated_at` AS `updated_at`,`contact_people`.`prefix` AS `prefix`,`contact_people`.`firstname` AS `firstname`,`contact_people`.`middlename` AS `middlename`,`contact_people`.`lastname` AS `lastname`,`contact_people`.`doc_cpf` AS `doc_cpf`,`contact_people`.`doc_rg` AS `doc_rg` from `contact_contacts` join `contact_people` where (`contact_contacts`.`id` = `contact_people`.`id`)", :force => true
   create_view "view_contact_property_addresses", "select `contact_property_properties`.`id` AS `id`,`contact_property_properties`.`type` AS `type`,`contact_property_properties`.`label` AS `label`,`contact_property_properties`.`value` AS `value`,`contact_property_properties`.`contact_contact_id` AS `contact_contact_id`,`contact_property_properties`.`created_at` AS `created_at`,`contact_property_properties`.`updated_at` AS `updated_at`,`contact_property_addresses`.`street` AS `street`,`contact_property_addresses`.`neighborhood` AS `neighborhood`,`contact_property_addresses`.`postal_code` AS `postal_code`,`contact_property_addresses`.`city` AS `city`,`contact_property_addresses`.`state` AS `state`,`contact_property_addresses`.`country` AS `country` from `contact_property_properties` join `contact_property_addresses` where (`contact_property_properties`.`id` = `contact_property_addresses`.`id`)", :force => true
 end
