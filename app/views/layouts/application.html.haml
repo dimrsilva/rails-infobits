@@ -13,6 +13,7 @@
           .nav-collapse.collapse
             %ul.nav
               = link_nav t(:contacts), contact_contacts_path
+              = link_nav t("projects/projects"), projects_projects_path
               = link_nav t("contacts/groups"), contact_groups_path
             - if user_signed_in?
               %p.navbar-text.pull-right

@@ -1,6 +1,7 @@
 pt:
   contacts: Contatos
   contacts/groups: Grupos
+  projects/projects: Projetos
   about: Sobre
   sign_out: Sair
 

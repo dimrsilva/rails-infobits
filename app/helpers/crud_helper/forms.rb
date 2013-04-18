@@ -1,23 +1,23 @@
 module CrudHelper::Forms
   class FormBuilder < ActionView::Helpers::FormBuilder
-    def date_field attribute
-      text_field attribute, :type => :date
+    def date_field attribute, options = {}
+      text_field attribute, :type => :date, :class => 'datepicker input-block-level'
+    end
 
-    # <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-    #   <input class="span2" size="16" type="text" value="12-02-2012">
-    #   <span class="add-on"><i class="icon-th"></i></span>
-    # </div>
+    def domain_field attribute, options = {}
+      collection_select attribute, options[:domain].all, :id, options[:domain].field_name
     end
 
     def nested_resource association
       @template.render "form_fields_nested_resources", :association => association, :form => self
     end
 
-    def labeled_input name, type = 'text_field'
+    def labeled_input name, type = 'text_field', options = {}
+      options['class'] = 'input-block-level'
       @template.content_tag(:div, :class => "control-group control-group-#{name}") do
         label(name, :class => 'control-label') +
         @template.content_tag(:div, :class => 'controls') do
-          send(type, name, :class => 'input-block-level')
+          send(type, name, options)
         end
       end
     end
