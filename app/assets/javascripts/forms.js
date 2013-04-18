@@ -20,5 +20,8 @@
             }
         });
         $('form input.datepicker').datepicker();
+        $(".alert button.close").click(function() {
+            $(this).parent().remove();
+        });
     });
 })(jQuery)

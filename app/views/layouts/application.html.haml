@@ -20,6 +20,17 @@
                 Signed in as #{current_user.email}.
                 \#{link_to t(:sign_out), destroy_user_session_path, :method => 'delete'}
           / /.nav-collapse
+    .system-messages
+      - if flash[:notice]
+        .alert.alert-success
+          %button.close{"data-dismiss" => "alert", :type => :button}
+            &times;
+          = flash[:notice]
+      - if flash[:alert]
+        .alert.alert-error
+          %button.close{"data-dismiss" => "alert", :type => :button}
+            &times;
+          = flash[:alert]
     .top-effect
       .container
         - if @breadcrumbs

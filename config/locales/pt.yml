@@ -62,6 +62,9 @@ pt:
           attributes:
             emails:
               invalid: tem valores inválidos
+        contact/group:
+          delete:
+            contacts_exists: Impossível deletar pois existem contatos neste grupo
       messages:
         blank: não pode ser vazio
         too_short: "deve ter no mínimo %{count} caracteres"

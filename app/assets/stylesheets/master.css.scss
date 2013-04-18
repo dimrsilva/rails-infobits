@@ -3,9 +3,19 @@
   background: #F5F5F5;
   margin-bottom: 20px;
 }
+.system-messages {
+  position: absolute;
+  width: 100%;
+  top: 70px;
+  text-align: center;
+}
+.system-messages .alert {
+  display: inline-block;
+}
 
 
 
 .translation_missing {
   color: red;
 }
+

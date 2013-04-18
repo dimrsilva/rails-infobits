@@ -65,10 +65,17 @@ class CrudController < ApplicationController
   end
 
   def destroy
-    @row.destroy
     respond_to do |format|
-      format.html { redirect_to get_model }
-      format.json { head :no_content }
+      if @row.destroy
+        format.html  { redirect_to_back(get_model,
+                      :notice => 'Row was successfully deleted.') }
+        format.json  { head :no_content }
+      else
+        format.html  { redirect_to_back(get_model,
+                      :alert => @row.errors.full_messages.join('<br/>')) }
+        format.json  { render :json => @row.errors,
+                      :status => :unprocessable_entity }
+      end
     end
   end 
 
@@ -149,6 +156,14 @@ class CrudController < ApplicationController
         else
           add_breadcrumb I18n.t(:edit), edit_polymorphic_url(@row)
         end
+      end
+    end
+
+    def redirect_to_back(default = root_url, options = {})
+      if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+        redirect_to :back, options
+      else
+        redirect_to default, options
       end
     end
 end

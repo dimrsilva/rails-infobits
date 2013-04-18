@@ -7,6 +7,11 @@ Dado %r/^que eu esteja logado como administrador$/ do
   fill_in 'Password', :with => @user.password
   click_button 'Sign in'
 end
+
+Quando %r/^eu clicar no botão de deletar o registro "([^"]*)"?/ do |label|
+  row = page.find('table').find('tr', :text => label)
+  row.find('a[data-method="delete"]').click()
+end
  
 Então %r/^eu devo ver "([^"]*)" no título$/ do |text|
   page.find('h1.title').should have_content text
@@ -20,4 +25,8 @@ Então %r/^eu (não )?devo ver o menu "([^"]*)"$/ do |negation, menu|
       page.find('ul.nav').should have_content menu
     end
   end
+end
+
+Então(%r/^eu devo ver a mensagem "([^"]*)"$/) do |message|
+  page.find('.system-messages').should have_content message
 end
