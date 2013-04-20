@@ -18,6 +18,18 @@ pt:
     formats:
       default: "%d/%m/%Y"
 
+  controllers:
+    messages:
+      create:
+        success: "Registro de %{row} inserido com sucesso"
+        error: "Houve um erro na inserção do registro de %{row}"
+      update:
+        success: "Registro de %{row} atualizado com sucesso"
+        error: "Houve um erro na atualização do registro de %{row}"
+      destroy:
+        success: "Registro de %{row} removido com sucesso"
+        error: "Houve um erro na remoção do registro de %{row}"
+
   activerecord:
     models:
       contact/contact: Contato
@@ -69,4 +81,15 @@ pt:
         blank: não pode ser vazio
         too_short: "deve ter no mínimo %{count} caracteres"
         invalid_date: deve ser inserido no formato dd/mm/yyyy
-
+  devise:
+    sessions:
+      user:
+        signed_in: Usuário autenticado com sucesso
+    failure:
+      user:
+        unauthenticated: Essa página requer autenticação
+  helpers:
+    submit:
+      create: "Criar %{model}"
+      update: "Atualizar %{model}"
+      destroy: "Apagar %{model}"

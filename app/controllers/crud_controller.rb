@@ -29,7 +29,7 @@ class CrudController < ApplicationController
     respond_to do |format|
       if @row.update_attributes(params[get_model_name])
         format.html  { redirect_to(@row,
-                      :notice => 'Row was successfully updated.') }
+                      :notice => get_translation(:update, :success)) }
         format.json  { head :no_content }
       else
         process_form
@@ -52,7 +52,7 @@ class CrudController < ApplicationController
     respond_to do |format|
       if @row.save
         format.html  { redirect_to(@row,
-                      :notice => 'Row was successfully created.') }
+                      :notice => get_translation(:create, :success)) }
         format.json  { render :json => @row,
                       :status => :created, :location => @row }
       else
@@ -68,7 +68,7 @@ class CrudController < ApplicationController
     respond_to do |format|
       if @row.destroy
         format.html  { redirect_to_back(get_model,
-                      :notice => 'Row was successfully deleted.') }
+                      :notice => get_translation(:destroy, :success)) }
         format.json  { head :no_content }
       else
         format.html  { redirect_to_back(get_model,
@@ -165,5 +165,11 @@ class CrudController < ApplicationController
       else
         redirect_to default, options
       end
+    end
+
+    def get_translation action, type
+      I18n.translate!("controllers.#{self.class.name.underscore}.messages.#{action}.#{type}", :row => get_model.model_name.human)
+    rescue I18n::MissingTranslationData
+      I18n.translate("controllers.messages.#{action}.#{type}", :row => get_model.model_name.human)
     end
 end
