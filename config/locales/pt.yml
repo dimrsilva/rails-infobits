@@ -1,7 +1,9 @@
 pt:
+  administration: Administração
   contacts: Contatos
-  contacts/groups: Grupos
+  contacts/groups: Grupos de Contatos
   projects/projects: Projetos
+  projects/statuses: Status de Projetos
   about: Sobre
   sign_out: Sair
 
@@ -35,7 +37,9 @@ pt:
       contact/contact: Contato
       contact/person: Pessoa Física
       contact/company: Pessoa Jurídica
-      contact/group: Grupo
+      contact/group: Grupo de Contato
+      projects/project: Projeto
+      projects/status: Status de Projeto
     attributes:
       contact/contact:
         id: "#"
