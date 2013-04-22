@@ -1,7 +1,7 @@
 module CrudHelper::Forms
   class FormBuilder < ActionView::Helpers::FormBuilder
     def date_field attribute, options = {}
-      text_field attribute, :type => :date, :class => 'datepicker input-block-level'
+      text_field attribute, :class => 'datepicker input-block-level', 'data-toggle' => 'datepicker'
     end
 
     def domain_field attribute, options = {}

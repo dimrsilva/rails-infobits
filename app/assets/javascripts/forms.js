@@ -19,10 +19,5 @@
                 r_item.remove();
             }
         });
-        $('form input.datepicker').datepicker();
-        $(".alert button.close").click(function() {
-            $(this).parent().remove();
-        });
-        $('.dropdown-toggle').dropdown();
     });
 })(jQuery)
