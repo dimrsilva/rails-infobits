@@ -11,6 +11,7 @@ FactoryGirl.define do
   factory 'contact/address'
 
   factory 'projects/project'
+  factory 'projects/status'
 
   factory 'contact/group' do
     sequence(:name) { |n| "Group #{n}" }

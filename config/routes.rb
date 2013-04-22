@@ -28,6 +28,10 @@ Infobits::Application.routes.draw do
     resources :contacts, :path => 'contatos', :as => 'contact_contacts'
   end
 
+  namespace :projects, :path => 'projetos' do
+    resources :statuses
+  end
+
   scope :module => "projects" do
     resources :projects, :path => 'projetos', :as => 'projects_projects'
   end

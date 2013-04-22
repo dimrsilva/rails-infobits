@@ -5,7 +5,7 @@ module CrudHelper::Forms
     end
 
     def domain_field attribute, options = {}
-      collection_select attribute, options[:domain].all, :id, options[:domain].field_name
+      collection_select attribute, options[:domain].all, :id, options[:domain].label_field
     end
 
     def nested_resource association

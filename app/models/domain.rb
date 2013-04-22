@@ -1,6 +1,6 @@
 class Domain < ActiveRecord::Base
 
-  def self.field_name
+  def self.label_field
     :value
   end
   
