@@ -70,7 +70,21 @@ pt:
         state: Estado
         country: País
       contact/group:
+        id: "#"
         name: Nome
+        acts_as_colaborator: "Agir como Colaborador"
+      projects/project:
+        id: "#"
+        title: Título
+        description: Descrição
+        manager: Gerente de Projeto
+        start_date: Data de Início
+        end_date: Date de Fim
+        status: Status
+        colaborators: Colaboradores
+      projects/status:
+        id: "#"
+        value: Valor
     errors:
       models:
         contact/property/email:
