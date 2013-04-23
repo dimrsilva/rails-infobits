@@ -18,7 +18,7 @@ describe Contacts::GroupsController do
       @contact.save
 
       post :destroy, :id => @group.id
-      response.should redirect_to contact_groups_path
+      flash[:alert].should_not be_empty
     end
   end
 end

@@ -3,7 +3,7 @@
         $('form .control-group-representant input, form .control-group-manager input').autocomplete({
             source: function(request, response) {
                 $.ajax({
-                    url: '/contatos/pessoas_fisicas',
+                    url: '/contatos/pessoas',
                     dataType: 'json',
                     data: {q: request.term},
                     success: function(data) {

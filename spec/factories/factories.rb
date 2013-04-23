@@ -2,9 +2,12 @@ FactoryGirl.define do
 
   factory 'contact/contact'
 
-  factory 'contact/person'
-
-  factory 'contact/company'
+  factory 'contact/person' do
+    sequence(:firstname) { |n| "Person #{n}" }
+  end
+  factory 'contact/company' do
+    sequence(:fantasy_name) { |n| "Company #{n}" }
+  end
 
   factory 'contact/email'
   factory 'contact/phone'

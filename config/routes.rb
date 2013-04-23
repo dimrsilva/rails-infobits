@@ -19,8 +19,8 @@ Infobits::Application.routes.draw do
   end
 
   namespace :contacts, :path => 'contatos', :as => 'contact' do
-      resources :people, :path => 'pessoas_fisicas'
-      resources :companies, :path => 'pessoas_juridicas'
+      resources :people, :path => 'pessoas'
+      resources :companies, :path => 'empresas'
       resources :groups, :path => 'grupos'
   end
 

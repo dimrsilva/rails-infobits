@@ -35,8 +35,8 @@ pt:
   activerecord:
     models:
       contact/contact: Contato
-      contact/person: Pessoa Física
-      contact/company: Pessoa Jurídica
+      contact/person: Pessoa
+      contact/company: Empresa
       contact/group: Grupo de Contato
       projects/project: Projeto
       projects/status: Status de Projeto
@@ -81,6 +81,9 @@ pt:
         contact/group:
           delete:
             contacts_exists: Impossível deletar pois existem contatos neste grupo
+        contact/person:
+          delete:
+            is_representant: Impossível deletar pois essa pessoa é representante em alguma empresa
       messages:
         blank: não pode ser vazio
         too_short: "deve ter no mínimo %{count} caracteres"
