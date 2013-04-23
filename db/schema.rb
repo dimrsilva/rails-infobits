@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417215103) do
+ActiveRecord::Schema.define(:version => 20130423010508) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -114,6 +114,15 @@ ActiveRecord::Schema.define(:version => 20130417215103) do
     t.index ["status_id"], :name => "fk__projects_projects_status_id"
     t.foreign_key ["manager_id"], "contact_contacts", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_projects_manager_id"
     t.foreign_key ["status_id"], "domains", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_projects_status_id"
+  end
+
+  create_table "projects_colaborators", :force => true do |t|
+    t.integer "contact_contact_id",  :null => false
+    t.integer "projects_project_id", :null => false
+    t.index ["contact_contact_id"], :name => "fk__projects_colaborators_contact_contact_id"
+    t.index ["projects_project_id"], :name => "fk__projects_colaborators_projects_project_id"
+    t.foreign_key ["contact_contact_id"], "contact_contacts", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_colaborators_contact_contact_id"
+    t.foreign_key ["projects_project_id"], "projects_projects", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_colaborators_projects_project_id"
   end
 
   create_view "view_contact_companies", "select `contact_contacts`.`id` AS `id`,`contact_contacts`.`type` AS `type`,`contact_contacts`.`fullname` AS `fullname`,`contact_contacts`.`birthdate` AS `birthdate`,`contact_contacts`.`note` AS `note`,`contact_contacts`.`created_at` AS `created_at`,`contact_contacts`.`updated_at` AS `updated_at`,`contact_companies`.`fantasy_name` AS `fantasy_name`,`contact_companies`.`legal_name` AS `legal_name`,`contact_companies`.`doc_cnpj` AS `doc_cnpj`,`contact_companies`.`doc_ie` AS `doc_ie`,`contact_companies`.`doc_im` AS `doc_im`,`contact_companies`.`representant_id` AS `representant_id` from `contact_contacts` join `contact_companies` where (`contact_contacts`.`id` = `contact_companies`.`id`)", :force => true

@@ -16,4 +16,9 @@ class Projects::ProjectsController < CrudController
         end
       end
     end
+
+    def process_form
+      super
+      @colaborators = Contact::Contact.all
+    end
 end

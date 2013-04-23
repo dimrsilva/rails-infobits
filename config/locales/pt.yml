@@ -31,6 +31,9 @@ pt:
       destroy:
         success: "Registro de %{row} removido com sucesso"
         error: "Houve um erro na remoção do registro de %{row}"
+    projects:
+      fieldsets:
+        colaborators: Colaboradores
 
   activerecord:
     models:

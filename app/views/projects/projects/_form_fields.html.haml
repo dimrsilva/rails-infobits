@@ -9,3 +9,7 @@
       = form.labeled_input :start_date, :date_field
       = form.labeled_input :end_date, :date_field
       = form.labeled_input :status_id, :domain_field, :domain => Projects::Status
+  %legend= t('controllers.projects.fieldsets.colaborators')
+  .row
+    .span5
+      = render 'form_colaborators', :form => form

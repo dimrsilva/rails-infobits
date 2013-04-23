@@ -1,0 +1,8 @@
+= form.fields_for :colaborators_ids do |group_form|
+  .control-group
+    = form.label :colaborators, :class => 'control-label'
+    .controls
+      - @colaborators.each do |contact|
+        %label.checkbox{:for => "project_colaborator_ids_#{contact.id}"}
+          = check_box_tag "#{form.object_name}[colaborator_ids][]", contact.id, @row.colaborator_ids.include?(contact.id), :id => "project_colaborator_ids_#{contact.id}"
+          = contact.fullname

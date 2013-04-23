@@ -25,7 +25,6 @@ class Contact::Contact < ActiveRecord::Base
 
   has_and_belongs_to_many :groups, :class_name => 'Contact::Group', :foreign_key => :contact_contact_id,
     :association_foreign_key => :contact_group_id, :join_table => :contact_contacts_groups
-  accepts_nested_attributes_for :groups
 
   validates_associated :emails
   validates_associated :phones
