@@ -19,6 +19,6 @@ class Projects::ProjectsController < CrudController
 
     def process_form
       super
-      @colaborators = Contact::Contact.all
+      @colaborators = Contact::Contact.joins(:groups).where('acts_as_colaborator = 1').group(:id).all
     end
 end

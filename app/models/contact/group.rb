@@ -4,7 +4,7 @@ class Contact::Group < ActiveRecord::Base
     :name
   end
 
-  attr_accessible :name
+  attr_accessible :name, :acts_as_colaborator
   has_and_belongs_to_many :contacts, :class_name => 'Contact::Contact', :foreign_key => :contact_group_id,
     :association_foreign_key => :contact_contact_id, :join_table => :contact_contacts_groups
 

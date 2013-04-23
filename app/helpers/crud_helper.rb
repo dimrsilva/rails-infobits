@@ -3,7 +3,7 @@ module CrudHelper
   def _form_fields_map_widgets column
     map = {
       :binary      => 'text_field',
-      :boolean     => 'text_field',
+      :boolean     => 'check_box',
       :date        => 'text_field',
       :datetime    => 'text_field',
       :decimal     => 'text_field',
