@@ -116,4 +116,7 @@ pt:
     submit:
       create: "Criar %{model}"
       update: "Atualizar %{model}"
-      destroy: "Apagar %{model}"
+      destroy: "Remover %{model}"
+    link:
+      edit: "Editar %{model}"
+      destroy: "Remover %{model}"

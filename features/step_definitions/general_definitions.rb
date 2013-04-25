@@ -27,6 +27,22 @@ Então %r/^eu (não )?devo ver o menu "([^"]*)"$/ do |negation, menu|
   end
 end
 
+Então %r/^eu (não )?devo ver um formulário d(?:e|a|o) (.*)$/ do |negation, form|
+  if negation
+    page.should have_no_selector('form')
+  else
+    page.should have_selector('form')
+  end
+end
+
+Então %r/^eu (não )?devo ver um resumo d(?:e|a|o) (.*)$/ do |negation, resume|
+  if negation
+    page.should have_no_selector('.view')
+  else
+    page.should have_selector('.view')
+  end
+end
+
 Então(%r/^eu devo ver a mensagem "([^"]*)"$/) do |message|
   page.find('.system-messages').should have_content message
 end

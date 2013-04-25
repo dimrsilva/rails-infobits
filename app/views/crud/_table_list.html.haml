@@ -18,7 +18,7 @@
         %td
           = row.send(c)
       %td
-        = link_to edit_polymorphic_url row, :page => params[:page] do
+        = link_to polymorphic_url row, :page => params[:page] do
           %i.icon-pencil{:title => t(:edit)}
         = link_to row, :method => 'delete', :confirm => 'Are you sure?' do
           %i.icon-remove{:title => t(:remove)}

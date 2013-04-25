@@ -1,0 +1,7 @@
+.view
+  - form_fields do |field|
+    %b= @row.class.human_attribute_name(field[:name])+":"
+    = @row.send field[:name]
+    %br
+  = link_to t('helpers.link.edit', :model => @row.class.model_name.human), edit_polymorphic_url(@row), :class => 'btn btn-primary'
+  = link_to t('helpers.link.destroy', :model => @row.class.model_name.human), @row, :class => 'btn btn-link', :method => 'delete', :confirm => 'Are you sure?'
