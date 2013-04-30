@@ -1,16 +1,17 @@
-%h3= @row.title
-%p
-  %b= @row.class.human_attribute_name(:manager)+":"
-  = @row.manager
-  %br
-  %b= @row.class.human_attribute_name(:status)+":"
-  = @row.status.value
-%p
-  %b= @row.class.human_attribute_name(:description)+":"
-  %br
-  = @row.description
-%p
-  %b= @row.class.human_attribute_name(:colaborators)+":"
-  = @row.colaborators.join ', '
-= link_to t('helpers.link.edit', :model => @row.class.model_name.human), edit_polymorphic_url(@row), :class => 'btn btn-primary'
-= link_to t('helpers.link.destroy', :model => @row.class.model_name.human), @row, :class => 'btn btn-link', :method => 'delete', :confirm => 'Are you sure?'
+.view
+  %h3= @row.title
+  %p
+    %b= @row.class.human_attribute_name(:manager)+":"
+    = @row.manager
+    %br
+    %b= @row.class.human_attribute_name(:status)+":"
+    = @row.status.value
+  %p
+    %b= @row.class.human_attribute_name(:description)+":"
+    %br
+    = @row.description
+  %p
+    %b= @row.class.human_attribute_name(:colaborators)+":"
+    = @row.colaborators.join ', '
+  = link_to t('helpers.link.edit', :model => @row.class.model_name.human), edit_polymorphic_url(@row), :class => 'btn btn-primary'
+  = link_to t('helpers.link.destroy', :model => @row.class.model_name.human), @row, :class => 'btn btn-link', :method => 'delete', :confirm => 'Are you sure?'

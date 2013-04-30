@@ -1,2 +1,3 @@
-class Contacts::GroupsController < CrudController
+class Contacts::GroupsController < ApplicationController
+  include Core::CrudResource
 end

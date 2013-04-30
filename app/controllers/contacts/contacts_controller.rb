@@ -1,4 +1,5 @@
-class Contacts::ContactsController < CrudController
+class Contacts::ContactsController < ApplicationController
+  include Core::CrudResource
 
   protected
     def fill_aditional_properties

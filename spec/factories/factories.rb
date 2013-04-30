@@ -13,7 +13,9 @@ FactoryGirl.define do
   factory 'contact/phone'
   factory 'contact/address'
 
-  factory 'projects/project'
+  factory 'projects/project' do
+    association :status, :factory => 'projects/status'
+  end
   factory 'projects/status'
 
   factory 'contact/group' do

@@ -1,4 +1,5 @@
-class Projects::ProjectsController < CrudController
+class Projects::ProjectsController < ApplicationController
+  include Core::CrudResource
   before_filter :parse_manager_id
 
   protected

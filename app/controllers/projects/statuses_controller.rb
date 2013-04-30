@@ -1,4 +1,5 @@
-class Projects::StatusesController < CrudController
+class Projects::StatusesController < ApplicationController
+  include Core::CrudResource
   protected
     def get_model
       Projects::Status
