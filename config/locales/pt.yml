@@ -76,7 +76,10 @@ pt:
       contact/group:
         id: "#"
         name: Nome
-        acts_as_colaborator: "Agir como Colaborador"
+        acts_as_colaborator: "Colaborador"
+        acts_as_administrator: "Administrador"
+        acts_as_project_manager: "Gerente de Projetos"
+        acts_as_project_director: "Diretor de Projetos"
       projects/project:
         id: "#"
         title: Título
