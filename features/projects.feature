@@ -13,3 +13,4 @@ Funcionalidade: Cadastro de Projetos
     E eu devo ver um resumo do projeto
     E eu devo ver o link "Editar Projeto"
     E eu devo ver o link "Remover Projeto"
+    E eu devo ver o link "Adicionar Tarefa"

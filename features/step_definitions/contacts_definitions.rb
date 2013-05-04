@@ -17,6 +17,9 @@ Dado %r/^que exista uma? (\w+) com nome "([^"]*)"$/ do |type, name|
     when 'empresa'
       model = Contact::Company
       field = :fantasy_name
+    when 'grupo'
+      model = Contact::Group
+      field = :name
   end
   model.create field => name
 end

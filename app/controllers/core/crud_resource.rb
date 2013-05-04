@@ -4,6 +4,7 @@ module Core
 
     included do
       before_filter :init
+      before_filter :parse_id_inputs
       before_filter :find_row, :only => [:show, :edit, :update, :destroy, :new, :create]
       before_filter :process_form, :only => [:show, :edit, :new]
       # before_filter :load_breadcrumbs
@@ -175,6 +176,24 @@ module Core
         I18n.translate!("controllers.#{self.class.name.underscore}.messages.#{action}.#{type}", :row => get_model.model_name.human)
       rescue I18n::MissingTranslationData
         I18n.translate("controllers.messages.#{action}.#{type}", :row => get_model.model_name.human)
+      end
+
+      def parse_id_inputs
+        if params[get_model_name]
+          params[get_model_name].each do |key, value|
+            get_model.reflect_on_all_associations.each do |assoc|
+              if(assoc.name.to_s == key.to_s)
+                if value =~ %r/\[id:\d+\]/
+                  assoc_model = eval(assoc.options[:class_name])
+                  params[get_model_name][key] = assoc_model.find(value.scan(%r/\[id:(\d+)\]$/)[0][0].to_i)
+                else
+                  params[get_model_name][key] = nil
+                end
+                break
+              end
+            end
+          end
+        end
       end
   end
 end

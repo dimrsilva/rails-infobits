@@ -19,3 +19,7 @@ end
 Então %r/^eu devo ver o texto "([^"]*)"/ do |text|
   page.should have_content text
 end
+
+Então(/^eu devo ver o um checkbox com o valor "(.*?)"$/) do |val|
+  pending
+end
