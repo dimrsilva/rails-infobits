@@ -4,6 +4,7 @@ pt:
   contacts/groups: Grupos de Contatos
   projects/projects: Projetos
   projects/statuses: Status de Projetos
+  projects/task_statuses: Status de Tarefas
   about: Sobre
   sign_out: Sair
 
@@ -43,6 +44,7 @@ pt:
       contact/group: Grupo de Contato
       projects/project: Projeto
       projects/status: Status de Projeto
+      projects/task_status: Status de Tarefa
     attributes:
       contact/contact:
         id: "#"

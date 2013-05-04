@@ -19,6 +19,7 @@
                 %ul.dropdown-menu{:role => 'menu'}
                   = link_nav t("contacts/groups"), contact_groups_path
                   = link_nav t("projects/statuses"), projects_statuses_path
+                  = link_nav t("projects/task_statuses"), projects_task_statuses_path
             - if user_signed_in?
               %p.navbar-text.pull-right
                 Signed in as #{current_user.email}.
@@ -37,12 +38,12 @@
           = flash[:alert]
     .top-effect
       .container
-        - if @breadcrumbs
-          %ul.breadcrumb
-            - @breadcrumbs[0..-2].each do |txt, url|
-              %li= link_to txt, url
-              %span.divider /
-            %li.active= @breadcrumbs.last.first
+        / - if @breadcrumbs
+        /   %ul.breadcrumb
+        /     - @breadcrumbs[0..-2].each do |txt, url|
+        /       %li= link_to txt, url
+        /       %span.divider /
+        /     %li.active= @breadcrumbs.last.first
         .row
           .span6
             %h1.title= @title

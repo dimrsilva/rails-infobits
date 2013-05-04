@@ -30,6 +30,7 @@ Infobits::Application.routes.draw do
 
   namespace :projects, :path => 'projetos' do
     resources :statuses
+    resources :task_statuses
   end
 
   scope :module => "projects" do

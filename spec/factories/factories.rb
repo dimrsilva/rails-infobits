@@ -17,6 +17,7 @@ FactoryGirl.define do
     association :status, :factory => 'projects/status'
   end
   factory 'projects/status'
+  factory 'projects/task_status'
 
   factory 'contact/group' do
     sequence(:name) { |n| "Group #{n}" }
