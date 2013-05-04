@@ -1,2 +1,2 @@
-module Projects::TasksStatusesHelper
+module Projects::TaskStatusesHelper
 end
