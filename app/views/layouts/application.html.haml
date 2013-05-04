@@ -20,6 +20,7 @@
                   = link_nav t("contacts/groups"), contact_groups_path
                   = link_nav t("projects/statuses"), projects_statuses_path
                   = link_nav t("projects/task_statuses"), projects_task_statuses_path
+                  = link_nav t("admin/users"), admin_users_path
             - if user_signed_in?
               %p.navbar-text.pull-right
                 Signed in as #{current_user.email}.

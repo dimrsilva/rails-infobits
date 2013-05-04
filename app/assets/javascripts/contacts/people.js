@@ -1,6 +1,6 @@
 (function($) {
     $(window).load(function() {
-        $('form .control-group-representant input, form .control-group-manager input').autocomplete({
+        $('form .control-group-representant input, form .control-group-manager input, form .control-group-contact input').autocomplete({
             source: function(request, response) {
                 $.ajax({
                     url: '/contatos/pessoas',

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504193044) do
+ActiveRecord::Schema.define(:version => 20130504194656) do
+
+  create_table "contact_contacts", :force => true do |t|
+    t.string   "type"
+    t.string   "fullname"
+    t.date     "birthdate"
+    t.text     "note"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -26,8 +35,11 @@ ActiveRecord::Schema.define(:version => 20130504193044) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "contact_id"
     t.index ["email"], :name => "index_admin_users_on_email", :unique => true
     t.index ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+    t.index ["contact_id"], :name => "fk__admin_users_contact_id"
+    t.foreign_key ["contact_id"], "contact_contacts", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_admin_users_contact_id"
   end
 
   create_table "contact_people", :force => true do |t|
@@ -48,15 +60,6 @@ ActiveRecord::Schema.define(:version => 20130504193044) do
     t.integer "representant_id"
     t.index ["representant_id"], :name => "fk__contact_companies_representant_id"
     t.foreign_key ["representant_id"], "contact_people", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_contact_companies_representant_id"
-  end
-
-  create_table "contact_contacts", :force => true do |t|
-    t.string   "type"
-    t.string   "fullname"
-    t.date     "birthdate"
-    t.text     "note"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "contact_groups", :force => true do |t|

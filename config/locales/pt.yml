@@ -1,5 +1,6 @@
 pt:
   administration: Administração
+  admin/users: Usuários do Sistema
   contacts: Contatos
   contacts/groups: Grupos de Contatos
   projects/projects: Projetos
