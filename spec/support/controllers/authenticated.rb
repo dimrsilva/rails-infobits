@@ -1,9 +1,11 @@
 shared_examples_for "Authenticated resource" do
+  let :get_example do
+    get :index
+    response
+  end
+
   context "User is not authenticated" do
-    subject do
-      get :index
-      response
-    end
+    subject { get_example }
     it { should redirect_to new_user_session_path }
   end
 
@@ -13,10 +15,7 @@ shared_examples_for "Authenticated resource" do
       sign_in @user
     end
 
-    subject do
-      get :index
-      response
-    end
+    subject { get_example }
     it { should_not redirect_to new_user_session_path }
   end
 end

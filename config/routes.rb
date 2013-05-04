@@ -34,7 +34,9 @@ Infobits::Application.routes.draw do
   end
 
   scope :module => "projects" do
-    resources :projects, :path => 'projetos', :as => 'projects_projects'
+    resources :projects, :path => 'projetos', :as => 'projects_projects' do
+      resources :tasks, :as => 'projects_tasks'
+    end
   end
 
   # Sample resource route with options:

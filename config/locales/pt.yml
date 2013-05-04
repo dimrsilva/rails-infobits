@@ -5,6 +5,7 @@ pt:
   projects/projects: Projetos
   projects/statuses: Status de Projetos
   projects/task_statuses: Status de Tarefas
+  projects/tasks: Tarefas
   about: Sobre
   sign_out: Sair
 
@@ -43,6 +44,7 @@ pt:
       contact/company: Empresa
       contact/group: Grupo de Contato
       projects/project: Projeto
+      projects/task: Tarefa
       projects/status: Status de Projeto
       projects/task_status: Status de Tarefa
     attributes:
@@ -84,6 +86,14 @@ pt:
         end_date: Date de Fim
         status: Status
         colaborators: Colaboradores
+      projects/task:
+        id: "#"
+        title: Título
+        description: Descrição
+        responsible: Responsável
+        estimated_time: Tempo Estimado
+        real_time: Tempo Realizado
+        taks_status: Status
       projects/status:
         id: "#"
         value: Valor
@@ -122,3 +132,4 @@ pt:
     link:
       edit: "Editar %{model}"
       destroy: "Remover %{model}"
+      create: "Adicionar %{model}"

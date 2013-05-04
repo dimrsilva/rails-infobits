@@ -1,0 +1,12 @@
+= form_for [@project, @row], :html => { :class => 'form-horizontal' }, :builder => CrudHelper::Forms::FormBuilder do |form|
+  - if @row.errors.any?
+    .alert.alert-error
+      %h4= t :validation_errors
+      %ul
+        - @row.errors.full_messages.each do |msg|
+          %li
+            = msg
+  = render 'form_fields', :form => form
+  = form.submit :class => 'btn btn-primary'
+  - if @row.id
+    = link_to 'Delete', projects_project_projects_task_path(@row, :projects_project_id => @row.project.id), :class => 'btn btn-link', :method => 'delete', :confirm => 'Are you sure?'

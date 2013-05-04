@@ -16,6 +16,7 @@ FactoryGirl.define do
   factory 'projects/project' do
     association :status, :factory => 'projects/status'
   end
+  factory 'projects/task'
   factory 'projects/status'
   factory 'projects/task_status'
 
