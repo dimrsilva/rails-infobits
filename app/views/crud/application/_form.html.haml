@@ -7,6 +7,7 @@
           %li
             = msg
   = render 'form_fields', :form => form
-  = form.submit :class => 'btn btn-primary'
-  - if @row.id
+  - if can? :update, @row
+    = form.submit :class => 'btn btn-primary'
+  - if @row.id and can?(:destroy, @row)
     = link_to 'Delete', @row, :class => 'btn btn-link', :method => 'delete', :confirm => 'Are you sure?'
