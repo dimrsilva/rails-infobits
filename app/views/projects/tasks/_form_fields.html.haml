@@ -3,7 +3,7 @@
     .span5
       = form.labeled_input :title
       = form.labeled_input :description, :text_area
-      / # = form.labeled_input :responsible
+      = form.labeled_input :responsible_id, :domain_field, :domain => @colaborators, :include_blank => true
     .span5
       = form.labeled_input :estimated_time
       = form.labeled_input :real_time

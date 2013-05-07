@@ -41,6 +41,17 @@ describe Projects::TasksController do
         post :create, :projects_project_id => project.id
         response.should redirect_to project
       end
+      it "should show on select box only contacts in project" do
+        c1 = FactoryGirl.create('contact/contact')
+        c2 = FactoryGirl.create('contact/contact')
+        c3 = FactoryGirl.create('contact/contact')
+        project.colaborators << c1
+        project.colaborators << c2
+        project.colaborators << c3
+
+        get :new, :projects_project_id => project.id
+        assigns[:colaborators].should eql [c1,c2,c3]
+      end
     end
   end
 end

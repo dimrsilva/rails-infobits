@@ -1,7 +1,6 @@
 class Projects::TasksController < ApplicationController
-  include Core::CrudResource
-
   before_filter :find_project
+  include Core::CrudResource
 
   def index
     redirect_to @project
@@ -57,6 +56,10 @@ class Projects::TasksController < ApplicationController
   protected
     def get_model
       Projects::Task
+    end
+
+    def process_form
+      @colaborators = @project.colaborators
     end
 
     def find_project
