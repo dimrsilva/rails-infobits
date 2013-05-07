@@ -29,12 +29,14 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     if user.administrator? or user.email == 'dimrsilva@gmail.com'
-      # Yes, I can do everytihing, MUHAHSAUSHUAHU
+      # Yes, I can do everything, MUHAHSAUSHUAHU
       can :manage, :all
     elsif user.project_director?
+      can :read, Contact::Contact
       can :manage, Projects::Project
       can :manage, Projects::Task
     elsif user.project_manager?
+      can :read, Contact::Contact
       can :create, Projects::Project
       can :manage, Projects::Project, :manager => user.contact
       can :manage, Projects::Task do |task|
@@ -45,7 +47,9 @@ class Ability
       can :read, Projects::Project do |project|
         project.colaborators.include? user.contact
       end
-      can :read, Projects::Task
+      can :read, Projects::Task do |task|
+        task.project.colaborators.include? user.contact
+      end
       can :update, Projects::Task, :responsible => user.contact
     end
   end

@@ -11,7 +11,7 @@ Funcionalidade: Cadastro de Contatos
   Cenário: Eu devo ser capaz de selecionar um contato após começar a digitar seu nome
     Dado que exista um contato com nome "José Augusto"
     E que eu visite a url "/contatos/empresas/novo"
-    Quando eu preencher o campo "Representante" com o valor "Jos"
+    Quando eu preencher o campo "Representante" com o valor "jos"
     Então eu devo ver o texto "José Augusto"
 
   @javascript

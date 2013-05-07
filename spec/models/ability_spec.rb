@@ -64,6 +64,7 @@ describe Ability do
     it { should be_able_to :create, Projects::Project }
     it { should_not be_able_to :manage, Admin::User }
 
+    let(:project) { Projects::Project.create }
     let(:task) do
       t = Projects::Task.new
       t.project = project
@@ -72,22 +73,15 @@ describe Ability do
     end
 
     context "with own project" do
-      let(:project) do
-        @project = Projects::Project.new
-        @project.manager = contact
-        @project.save
-        @project
+      before :each do
+        project.manager = contact
       end
       it { should be_able_to :manage, project }
       it { should be_able_to :manage, task }
     end
 
     context "with project owned by another person" do
-      let(:project) do
-        @project = Projects::Project.new
-        @project.save
-        @project
-      end
+
       it { should_not be_able_to :manage, project }
       it { should_not be_able_to :read, project }
       it { should_not be_able_to :update, project }
@@ -103,6 +97,14 @@ describe Ability do
     before :each do
       contact.groups << group_colaborator
     end
+
+    let(:task) do
+      p = Projects::Task.new
+      p.project = project
+      return p
+    end
+    let(:project) { Projects::Project.create }
+
     it { should_not be_able_to :manage, Projects::Project }
     it { should be_able_to :read, Projects::Project }
     it { should_not be_able_to :update, Projects::Project }
@@ -114,49 +116,38 @@ describe Ability do
     it { should_not be_able_to :destroy, Projects::Task }
 
     context "with project which he is a colaborator" do
-      let(:project) do
-        @project = Projects::Project.new
-        @project.colaborators << contact
-        @project.save
-        @project
+      before :each do
+        project.colaborators << contact
       end
       it { should be_able_to :read, project }
       it { should_not be_able_to :update, project }
 
       context "with task which he is the responsible" do
-        let(:task) do
-          @task = Projects::Task.new
-          @task.responsible = contact
-          @task.save
-          @task
+        before :each do
+          task.responsible = contact
         end
 
+        it { should be_able_to :read, task }
         it { should be_able_to :update, task }
         it { should_not be_able_to :destroy, task }
       end
 
       context "with task which he is not the responsible" do
-        let(:task) do
-          @task = Projects::Task.new
-          @task.save
-          @task
-        end
-
         it { should be_able_to :read, task }
         it { should_not be_able_to :update, task }
+        it { should_not be_able_to :destroy, task }
       end
     end
 
     context "with project which he is not a colaborator" do
-      let(:project) do
-        @project = Projects::Project.new
-        @project.save
-        @project
-      end
       it { should_not be_able_to :manage, project }
       it { should_not be_able_to :read, project }
       it { should_not be_able_to :update, project }
       it { should_not be_able_to :destroy, project }
+      it { should_not be_able_to :manage, task }
+      it { should_not be_able_to :read, task }
+      it { should_not be_able_to :update, task }
+      it { should_not be_able_to :destroy, task }
     end
   end
 end

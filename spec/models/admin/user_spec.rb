@@ -58,27 +58,43 @@ describe Admin::User do
     @user.encrypted_password.should eql encrypted
   end
 
-  it "should be administrator with contact in group which acts_as_administrator" do
-    @group = Contact::Group.new
-    @group.acts_as_administrator = true;
-    @group.save
+  context "checking roles" do
+    let(:group_administrator) { Contact::Group.create(:acts_as_administrator => true) }
+    let(:group_colaborator) { Contact::Group.create(:acts_as_colaborator => true) }
+    let(:contact) { Contact::Person.create }
+    let(:user) { Admin::User.create(
+      :contact => contact,
+      :email => 'test@example.com',
+      :password => '123'
+    ) }
 
-    @contact = Contact::Person.new
-    @contact.groups << @group
-    @contact.save
+    subject { user }
 
-    @user = Admin::User.new
-    @user.contact = @contact
-    @user.email = 'test@example.com'
-    @user.password = '123'
-
-    @user.should be_administrator
-
-    @group.acts_as_administrator = false
-    @group.save
-
-    @user.should_not be_administrator
+    context "user in administrator group" do
+      before :each do
+        contact.groups << group_administrator
+      end
+      it { should be_administrator }
+      it { should_not be_colaborator }
+    end
+    context "user in administrator and colaborator group" do
+      before :each do
+        contact.groups << group_administrator
+        contact.groups << group_colaborator
+      end
+      it { should be_administrator }
+      it { should be_colaborator }
+    end
+    context "user in colaborator and administrator group" do
+      before :each do
+        contact.groups << group_colaborator
+        contact.groups << group_administrator
+      end
+      it { should be_administrator }
+      it { should be_colaborator }
+    end
   end
+
 
   it "should not raise error when have no contact and try to check permissions" do
     @user = Admin::User.new
