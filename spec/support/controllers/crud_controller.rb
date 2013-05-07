@@ -2,8 +2,7 @@ shared_examples_for "Crud resource" do
 
   before :each do
     @model = controller.send(:get_model)
-    @user = FactoryGirl.create('admin/user')
-    sign_in @user
+    sign_in_administrator
   end
 
   let!(:row) do
@@ -48,13 +47,13 @@ shared_examples_for "Crud resource" do
       end
       it { should be_success }
     end
-    context "GET /show" do
-      subject do
-        send :get, *get_show_action
-        response
-      end
-      it { should be_success }
-    end
+    # context "GET /show" do
+    #   subject do
+    #     send :get, *get_show_action
+    #     response
+    #   end
+    #   it { should be_success }
+    # end
 
     it "should filter results"
   end
@@ -64,8 +63,8 @@ shared_examples_for "Crud resource" do
       @model.stub!(:find).and_raise(ActiveRecord::RecordNotFound)
       get :edit, :id => 1
       response.response_code.should eql 404 
-      get :show, :id => 1
-      response.response_code.should eql 404 
+      # get :show, :id => 1
+      # response.response_code.should eql 404 
       post :update, :id => 1
       response.response_code.should eql 404 
       post :destroy, :id => 1
@@ -79,15 +78,15 @@ shared_examples_for "Crud resource" do
         @model.any_instance.stub(:valid?).and_return(true)
       end
 
-      it "should insert and redirect to show page" do
+      it "should insert and redirect to edit page" do
         post :create
         assigns[:row].should_not be_new_record
-        response.should redirect_to :action => :show, :id => assigns[:row].id
+        response.should redirect_to :action => :edit, :id => assigns[:row].id
       end
 
-      it "should update and redirect to show page" do
+      it "should update and redirect to edit page" do
         post :update, :id => row.id
-        response.should redirect_to :action => :show, :id => assigns[:row].id
+        response.should redirect_to :action => :edit, :id => assigns[:row].id
       end
 
       it "should redirect to index after destroying" do

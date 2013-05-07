@@ -11,20 +11,7 @@
         .container
           %a.brand{:href => "#"} Infobits
           .nav-collapse.collapse
-            %ul.nav
-              = link_nav t(:contacts), contact_contacts_path
-              = link_nav t("projects/projects"), projects_projects_path
-              %li.dropdown
-                %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}= t(:administration)
-                %ul.dropdown-menu{:role => 'menu'}
-                  = link_nav t("contacts/groups"), contact_groups_path
-                  = link_nav t("projects/statuses"), projects_statuses_path
-                  = link_nav t("projects/task_statuses"), projects_task_statuses_path
-                  = link_nav t("admin/users"), admin_users_path
-            - if user_signed_in?
-              %p.navbar-text.pull-right
-                Signed in as #{current_user.email}.
-                \#{link_to t(:sign_out), destroy_user_session_path, :method => 'delete'}
+            = render 'menu'
           / /.nav-collapse
     .system-messages
       - if flash[:notice]

@@ -10,6 +10,6 @@ Funcionalidade: Cadastro de Contatos
   Cenário: Eu devo ser capaz de selecionar a quais grupos um contato pertence
     Dado que exista um grupo com nome "Cliente"
     E que exista um grupo com nome "Colaborador"
-    E que eu visite a url "/contatos/pessoas/new"
+    E que eu visite a url "/contatos/pessoas/novo"
     Então eu devo ver o um checkbox com o valor "Cliente"
     E eu devo ver o um checkbox com o valor "Colaborador"

@@ -18,4 +18,32 @@ class Admin::User < ActiveRecord::Base
   def self.label_field
     :email
   end
+
+  def administrator?
+    check_role :acts_as_administrator
+  end
+
+  def project_director?
+    check_role :acts_as_project_director
+  end
+
+  def project_manager?
+    check_role :acts_as_project_manager
+  end
+
+  def colaborator?
+    check_role :acts_as_colaborator
+  end
+
+  private
+    def check_role attr
+      if contact
+        contact.groups.each do |group|
+          if group.send(attr)
+            return true
+          end
+        end
+      end
+      return false
+    end
 end

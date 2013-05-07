@@ -1,7 +1,11 @@
 # encoding: utf-8
 
 Dado %r/^que eu esteja logado como administrador$/ do
-  @user = FactoryGirl.create('admin/user')
+  @group = FactoryGirl.create('contact/group', :acts_as_administrator => true)
+  @person = FactoryGirl.create('contact/person')
+  @person.groups << @group
+  @person.save
+  @user = FactoryGirl.create('admin/user', :contact => @person)
   visit '/'
   fill_in 'Email', :with => @user.email
   fill_in 'Password', :with => @user.password

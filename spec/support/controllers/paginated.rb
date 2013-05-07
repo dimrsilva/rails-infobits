@@ -1,8 +1,7 @@
 shared_examples_for "Paginated resource" do
   before :each do
     @model = controller.send(:get_model)
-    @user = FactoryGirl.create('admin/user')
-    sign_in @user
+    sign_in_administrator
   end
 
   it "should paginate rows on index" do

@@ -8,5 +8,5 @@ class Projects::Task < ActiveRecord::Base
 
   belongs_to :project, :class_name => 'Projects::Project', :foreign_key => :project_id
   belongs_to :task_status, :class_name => 'Projects::TaskStatus', :foreign_key => :task_status_id
-  # belongs_to :responsible, :class_name => 'Contacts::Contact', :foreign_key => :responsiblee_id
+  belongs_to :responsible, :class_name => 'Contact::Contact', :foreign_key => :responsible_id
 end

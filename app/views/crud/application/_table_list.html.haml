@@ -10,16 +10,22 @@
       %th
   %tbody
     - @list.each do |row|
-      - if row == @row
-        %tr.selected
-      - else
+      - if can? :read, row
         %tr
-      - @table_list_columns.each do |c|
+        - @table_list_columns.each do |c|
+          %td
+            = row.send(c)
         %td
-          = row.send(c)
-      %td
-        = link_to polymorphic_url row, :page => params[:page] do
-          %i.icon-pencil{:title => t(:edit)}
-        = link_to row, :method => 'delete', :confirm => 'Are you sure?' do
-          %i.icon-remove{:title => t(:remove)}
+          - begin
+            - Rails.application.routes.recognize_path polymorphic_url(row)
+            - if can? :read, row
+              = link_to polymorphic_url row, :page => params[:page] do
+                %i.icon-pencil{:title => t(:edit)}
+          - rescue
+            - if can? :update, row
+              = link_to edit_polymorphic_url row, :page => params[:page] do
+                %i.icon-pencil{:title => t(:edit)}
+          - if can? :destroy, row
+            = link_to row, :method => 'delete', :confirm => 'Are you sure?' do
+              %i.icon-remove{:title => t(:remove)}
 = will_paginate @list

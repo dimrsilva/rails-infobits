@@ -20,9 +20,7 @@ describe Projects::TasksController do
   context "User is Authenticated" do
 
     before :each do
-      @model = controller.send(:get_model)
-      @user = FactoryGirl.create('admin/user')
-      sign_in @user
+      sign_in_administrator
     end
 
     context "with valid data" do

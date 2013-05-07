@@ -3,6 +3,8 @@ module Core
     extend ActiveSupport::Concern
 
     included do
+      rescue_from CanCan::AccessDenied, :with => lambda { render "/errors/403", :status => 403 }
+      rescue_from ActiveRecord::RecordNotFound, :with => lambda { render "/errors/404", :status => 404 }
       before_filter :init
       before_filter :parse_id_inputs
       before_filter :find_row, :only => [:show, :edit, :update, :destroy, :new, :create]
@@ -31,7 +33,7 @@ module Core
     def update
       respond_to do |format|
         if @row.update_attributes(params[get_model_name])
-          format.html  { redirect_to(@row,
+          format.html  { redirect_to(edit_polymorphic_path(@row),
                         :notice => get_translation(:update, :success)) }
           format.json  { head :no_content }
         else
@@ -54,8 +56,8 @@ module Core
       @row.attributes = params[get_model_name]
       respond_to do |format|
         if @row.save
-          format.html  { redirect_to(@row,
-                        :notice => get_translation(:create, :success)) }
+          format.html  { redirect_to(edit_polymorphic_path(@row),
+                        :notice => get_translation(:create, :success), :action => :edit) }
           format.json  { render :json => @row,
                         :status => :created, :location => @row }
         else
@@ -108,14 +110,24 @@ module Core
         get_model.model_name.underscore.gsub('/', '_')
       end
 
+      def get_perm_from_action action
+        return case action
+          when "show" then :read
+          when "edit" then :update
+          when "new" then :create
+          else action
+        end
+      end
+
       def find_row
+        perm = get_perm_from_action params[:action]
+
         if params[:id]
           @row = get_model.find(params[:id].to_i)
         else
           @row = get_model.new
         end
-      rescue ActiveRecord::RecordNotFound
-        render "/errors/404", :status => 404
+        authorize! perm, @row
       end
 
       def init
@@ -142,6 +154,7 @@ module Core
       end
 
       def load_list
+        authorize! :read, get_list_model
         @list = get_list_model
         @list = filter_list params[:q] unless params[:q] == nil
         @list = order_list

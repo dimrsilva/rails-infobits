@@ -7,9 +7,7 @@ describe Contacts::PeopleController do
 
   context "User is authenticated" do
     before :each do
-      Admin::User.any_instance.stub(:valid?).and_return(true)
-      @user = Admin::User.create :email => "test@example.com"
-      sign_in @user
+      sign_in_administrator
     end
 
     it "should show error when deleting person registered as representant of an company" do

@@ -1,0 +1,21 @@
+%ul.nav
+  - if can? :read, Contact::Contact
+    = link_nav t(:contacts), contact_contacts_path
+  - if can? :read, Projects::Project
+    = link_nav t("projects/projects"), projects_projects_path
+  - if can?(:read, Contact::Group) || can?(:read, Projects::Status) || can?(:read, Projects::TaskStatus) || can?(:read, Admin::User)
+    %li.dropdown
+      %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}= t(:administration)
+      %ul.dropdown-menu{:role => 'menu'}
+        - if can? :read, Contact::Group
+          = link_nav t("contacts/groups"), contact_groups_path
+        - if can? :read, Projects::Status
+          = link_nav t("projects/statuses"), projects_statuses_path
+        - if can? :read, Projects::TaskStatus
+          = link_nav t("projects/task_statuses"), projects_task_statuses_path
+        - if can? :read, Admin::User
+          = link_nav t("admin/users"), admin_users_path
+- if user_signed_in?
+  %p.navbar-text.pull-right
+    Signed in as #{current_user.email}.
+    #{link_to t(:sign_out), destroy_user_session_path, :method => 'delete'}

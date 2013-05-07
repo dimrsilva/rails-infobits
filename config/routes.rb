@@ -14,28 +14,30 @@ Infobits::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  namespace :admin do
-      resources :users
-  end
+  scope :path_names => {:new => "novo", :create => "criar", :edit => "editar"} do
+    namespace :admin do
+        resources :users, :except => :show
+    end
 
-  namespace :contacts, :path => 'contatos', :as => 'contact' do
-      resources :people, :path => 'pessoas'
-      resources :companies, :path => 'empresas'
-      resources :groups, :path => 'grupos'
-  end
+    namespace :contacts, :path => 'contatos', :as => 'contact' do
+        resources :people, :path => 'pessoas', :except => :show
+        resources :companies, :path => 'empresas', :except => :show
+        resources :groups, :path => 'grupos', :except => :show
+    end
 
-  scope :module => "contacts" do
-    resources :contacts, :path => 'contatos', :as => 'contact_contacts'
-  end
+    scope :module => "contacts" do
+      resources :contacts, :path => 'contatos', :as => 'contact_contacts', :except => :show
+    end
 
-  namespace :projects, :path => 'projetos' do
-    resources :statuses
-    resources :task_statuses
-  end
+    namespace :projects, :path => 'projetos' do
+      resources :statuses, :except => :show
+      resources :task_statuses, :except => :show
+    end
 
-  scope :module => "projects" do
-    resources :projects, :path => 'projetos', :as => 'projects_projects' do
-      resources :tasks, :as => 'projects_tasks'
+    scope :module => "projects" do
+      resources :projects, :path => 'projetos', :as => 'projects_projects' do
+        resources :tasks, :as => 'projects_tasks', :except => :show
+      end
     end
   end
 

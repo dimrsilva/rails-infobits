@@ -42,3 +42,9 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def sign_in_administrator
+  @user = FactoryGirl.create('admin/user')
+  Ability.any_instance.stub(:can?).and_return(true)
+  sign_in @user
+end
