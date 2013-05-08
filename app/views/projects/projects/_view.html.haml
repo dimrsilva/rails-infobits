@@ -21,16 +21,17 @@
         %br
         = @row.description
   %h3= t 'projects/tasks'
-  - @row.tasks.each do |task|
-    .alert.alert-info
-      %b= task.title
-      = truncate(task.description, :length => 80)
-      .pull-right
-        - if can? :update, task
-          = link_to edit_projects_project_projects_task_path(task, :projects_project_id => @row.id) do
-            %i.icon-pencil{:title => t(:edit)}
-        - if can? :destroy, task
-          = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :method => 'delete', :confirm => 'Are you sure?' do
-            %i.icon-remove{:title => t(:remove)}
+  %ul
+    - @row.tasks.each do |task|
+      %li.alert.alert-info{:style=>'list-style:none'}
+        %b= task.title
+        = truncate(task.description, :length => 80)
+        .pull-right
+          - if can? :update, task
+            = link_to edit_projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'view' do
+              %i.icon-pencil{:title => t(:edit)}
+          - if can? :destroy, task
+            = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'destroy', :method => 'delete', :confirm => 'Are you sure?' do
+              %i.icon-remove{:title => t(:remove)}
   - if can? :create, Projects::Task
     = link_to t('helpers.link.create', :model => Projects::Task.model_name.human), new_projects_project_projects_task_url(:projects_project_id => @row.id), :class => 'btn btn-link'

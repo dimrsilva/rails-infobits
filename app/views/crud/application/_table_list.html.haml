@@ -12,20 +12,20 @@
     - @list.each do |row|
       - if can? :read, row
         %tr
-        - @table_list_columns.each do |c|
+          - @table_list_columns.each do |c|
+            %td
+              = row.send(c)
           %td
-            = row.send(c)
-        %td
-          - begin
-            - Rails.application.routes.recognize_path polymorphic_url(row)
-            - if can? :read, row
-              = link_to polymorphic_url row, :page => params[:page] do
-                %i.icon-pencil{:title => t(:edit)}
-          - rescue
-            - if can? :update, row
-              = link_to edit_polymorphic_url row, :page => params[:page] do
-                %i.icon-pencil{:title => t(:edit)}
-          - if can? :destroy, row
-            = link_to row, :method => 'delete', :confirm => 'Are you sure?' do
-              %i.icon-remove{:title => t(:remove)}
+            - begin
+              - Rails.application.routes.recognize_path polymorphic_url(row)
+              - if can? :read, row
+                = link_to polymorphic_url(row, :page => params[:page]), :class => 'view'  do
+                  %i.icon-pencil{:title => t(:edit)}
+            - rescue
+              - if can? :update, row
+                = link_to edit_polymorphic_url(row, :page => params[:page]), :class => 'view' do
+                  %i.icon-pencil{:title => t(:edit)}
+            - if can? :destroy, row
+              = link_to row, :method => 'delete', :confirm => 'Are you sure?', :class => 'destroy' do
+                %i.icon-remove{:title => t(:remove)}
 = will_paginate @list

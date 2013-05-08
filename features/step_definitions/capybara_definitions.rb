@@ -12,8 +12,22 @@ Quando %r/^eu confirmar a mensagem de alerta$/ do
   page.driver.browser.switch_to.alert.accept
 end
 
-Então %r/^eu devo ver o link "([^"]*)"/ do |link|
-  page.find_link link
+Então %r/^eu (não )?devo ver o link "([^"]*)"$/ do |negation, menu|
+    if negation
+      page.should_not have_selector('a', :text => menu)
+    else
+      page.should have_selector('a', :text => menu)
+    end
+end
+
+Então %r/^eu (não )?devo ver o botão "([^"]*)"$/ do |negation, menu|
+    if negation
+      expect {
+        page.find_button menu
+      }.to raise_error
+    else
+      page.find_button menu
+    end
 end
 
 Então %r/^eu devo ver o texto "([^"]*)"/ do |text|

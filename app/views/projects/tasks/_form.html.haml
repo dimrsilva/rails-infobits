@@ -10,4 +10,4 @@
   - if can? :update, @row
     = form.submit :class => 'btn btn-primary'
   - if @row.id and can?(:destroy, @row)
-    = link_to 'Delete', projects_project_projects_task_path(@row, :projects_project_id => @row.project.id), :class => 'btn btn-link', :method => 'delete', :confirm => 'Are you sure?'
+    = link_to t('helpers.link.destroy', :model => @row.class.model_name.human), projects_project_projects_task_path(@row, :projects_project_id => @row.project.id), :class => 'btn btn-link', :method => 'delete', :confirm => 'Are you sure?'
