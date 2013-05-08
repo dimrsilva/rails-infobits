@@ -138,7 +138,7 @@ module Core
       end
 
       def filter_list q
-        @list.where("#{get_model.label_field} LIKE '%#{q}%'")
+        @list.where("LOWER(#{get_model.label_field}) LIKE '%#{q.downcase}%'")
       end
 
       def order_list
