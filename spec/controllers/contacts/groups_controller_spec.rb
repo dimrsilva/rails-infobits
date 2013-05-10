@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Contacts::GroupsController do
   it_behaves_like "Authenticated resource"
   it_behaves_like "Paginated resource"
-  it_behaves_like "Crud resource"
+  it_behaves_like "Crud resource default behavior", Contact::Group
 
   context "User is authenticated" do
     before :each do

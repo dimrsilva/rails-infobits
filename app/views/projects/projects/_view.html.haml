@@ -1,7 +1,6 @@
 .view
   .row
     .span5
-      %h3= @row.title
       %p
         %b= @row.class.human_attribute_name(:manager)+":"
         = @row.manager
@@ -11,10 +10,6 @@
       %p
         %b= @row.class.human_attribute_name(:colaborators)+":"
         = @row.colaborators.join ', '
-      - if can? :update, @row
-        = link_to t('helpers.link.edit', :model => @row.class.model_name.human), edit_polymorphic_url(@row), :class => 'btn btn-primary'
-      - if can? :destroy, @row
-        = link_to t('helpers.link.destroy', :model => @row.class.model_name.human), @row, :class => 'btn btn-link', :method => 'delete', :confirm => 'Are you sure?'
     .span5
       %p
         %b= @row.class.human_attribute_name(:description)+":"
@@ -33,5 +28,3 @@
           - if can? :destroy, task
             = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'destroy', :method => 'delete', :confirm => 'Are you sure?' do
               %i.icon-remove{:title => t(:remove)}
-  - if can? :create, Projects::Task
-    = link_to t('helpers.link.create', :model => Projects::Task.model_name.human), new_projects_project_projects_task_url(:projects_project_id => @row.id), :class => 'btn btn-link'

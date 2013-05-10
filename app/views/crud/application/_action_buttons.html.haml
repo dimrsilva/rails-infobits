@@ -1,3 +1,3 @@
-- if can? :create, @template_row.class
-  %p
-    = link_to t(:create_row, :row => @template_row.class.model_name.human), new_polymorphic_path(@template_row.class), :class => 'btn'
+%p
+  - @action_buttons.each do |ab|
+    = link_to ab[:text], ab[:url], :class => 'btn'

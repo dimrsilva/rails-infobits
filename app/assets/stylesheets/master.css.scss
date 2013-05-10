@@ -1,21 +1,25 @@
 .top-effect {
-  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  position: fixed;
+  top: 41px; /* 41px to make the container go all the way to the bottom of the topbar */
+  width: 100%;
   background: #F5F5F5;
   margin-bottom: 20px;
+  z-index: 1;
 }
-.system-messages {
-  position: absolute;
-  width: 100%;
-  top: 70px;
-  text-align: center;
+.action-buttons {
+  padding-top: 14px;
 }
-.system-messages .alert {
-  display: inline-block;
+.content {
+  padding-top: 117px;
 }
-
-
 
 .translation_missing {
   color: red;
 }
 
+
+h1.title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

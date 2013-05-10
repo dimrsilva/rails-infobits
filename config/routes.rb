@@ -20,23 +20,23 @@ Infobits::Application.routes.draw do
     end
 
     namespace :contacts, :path => 'contatos', :as => 'contact' do
-        resources :people, :path => 'pessoas', :except => :show
-        resources :companies, :path => 'empresas', :except => :show
-        resources :groups, :path => 'grupos', :except => :show
+        resources :people, :path => 'pessoas'
+        resources :companies, :path => 'empresas'
+        resources :groups, :path => 'grupos'
     end
 
     scope :module => "contacts" do
-      resources :contacts, :path => 'contatos', :as => 'contact_contacts', :except => :show
+      resources :contacts, :path => 'contatos', :as => 'contact_contacts'
     end
 
     namespace :projects, :path => 'projetos' do
-      resources :statuses, :except => :show
-      resources :task_statuses, :except => :show
+      resources :statuses
+      resources :task_statuses
     end
 
     scope :module => "projects" do
       resources :projects, :path => 'projetos', :as => 'projects_projects' do
-        resources :tasks, :as => 'projects_tasks', :except => :show
+        resources :tasks, :as => 'projects_tasks', :except => [:show, :index]
       end
     end
   end

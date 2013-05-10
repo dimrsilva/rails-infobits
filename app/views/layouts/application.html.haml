@@ -13,17 +13,6 @@
           .nav-collapse.collapse
             = render 'menu'
           / /.nav-collapse
-    .system-messages
-      - if flash[:notice]
-        .alert.alert-success
-          %button.close{"data-dismiss" => "alert", :type => :button}
-            &times;
-          = flash[:notice]
-      - if flash[:alert]
-        .alert.alert-error
-          %button.close{"data-dismiss" => "alert", :type => :button}
-            &times;
-          = flash[:alert]
     .top-effect
       .container
         / - if @breadcrumbs
@@ -33,14 +22,25 @@
         /       %span.divider /
         /     %li.active= @breadcrumbs.last.first
         .row
-          .span6
+          .span8
             %h1.title= @title
             %span.subtitle= @subtitle
-          .span6.text-right
+          .span4.text-right.action-buttons
             = render 'action_buttons'
     .container
       .row
         .span10.content
+          .system-messages
+            - if flash[:notice]
+              .alert.alert-success
+                %button.close{"data-dismiss" => "alert", :type => :button}
+                  &times;
+                = flash[:notice]
+            - if flash[:alert]
+              .alert.alert-error
+                %button.close{"data-dismiss" => "alert", :type => :button}
+                  &times;
+                = flash[:alert]
           = yield
         .span2.sidebar
     #footer

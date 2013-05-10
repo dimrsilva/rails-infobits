@@ -19,5 +19,8 @@
                 r_item.remove();
             }
         });
+        $('form').on('keyup', ':input.input-label', function(event) {
+            $('.title').text($(this).val());
+        });
     });
 })(jQuery)

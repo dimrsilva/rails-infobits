@@ -14,6 +14,7 @@ module Core
 
     def index
       load_list
+      load_index_actions
       respond_to do |format|
         format.html  # index.html.erb
         format.json  { render :json => @list }
@@ -21,6 +22,7 @@ module Core
     end
 
     def show
+      load_show_actions
       respond_to do |format|
         format.html  # show.html.erb
         format.json  { render :json => @row }
@@ -28,6 +30,7 @@ module Core
     end
 
     def edit
+      load_edit_actions
     end
 
     def update
@@ -127,13 +130,15 @@ module Core
         else
           @row = get_model.new
         end
+        @title = @row.send(@row.class.label_field)
         authorize! perm, @row
       end
 
       def init
         @template_row = get_model.new
-        @title = I18n.t self.class.name.underscore.gsub(%r/_controller$/, '')
+        @title = I18n.t 'helpers.index.list', :model => I18n.t(self.class.name.underscore.gsub(%r/_controller$/, ''))
         @per_page = 10
+        @action_buttons = []
         prepend_view_path 'app/views/crud'
       end
 
@@ -160,6 +165,33 @@ module Core
         @list = order_list
         @list = paginate_list
         load_table_list_columns
+      end
+
+      def load_index_actions
+        if can? :create, @template_row.class
+          @action_buttons << {
+            :text => I18n.t('helpers.link.create', :model => @template_row.class.model_name.human),
+            :url => new_polymorphic_path(@template_row.class)
+          }
+        end
+      end
+
+      def load_show_actions
+        if can? :update, @row
+          @action_buttons << {
+            :text => I18n.t('helpers.link.edit', :model => @row.class.model_name.human),
+            :url => edit_polymorphic_path(@row)
+          }
+        end
+      end
+
+      def load_edit_actions
+        if can? :read, @row
+          @action_buttons << {
+            :text => I18n.t('helpers.link.read', :model => @row.class.model_name.human),
+            :url => polymorphic_path(@row)
+          }
+        end
       end
 
       def process_form

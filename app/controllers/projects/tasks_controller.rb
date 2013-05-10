@@ -58,6 +58,9 @@ class Projects::TasksController < ApplicationController
       Projects::Task
     end
 
+    def load_edit_actions
+    end
+
     def process_form
       @colaborators = @project.colaborators
     end

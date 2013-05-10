@@ -9,7 +9,7 @@ Funcionalidade: Cadastro de Contatos
 
   Cenário: Eu devo ser capaz de inserir novos contatos
     Dado que eu visite a url "/contatos"
-    Então eu devo ver "Contatos" no título
+    Então eu devo ver "Lista de Contatos" no título
     E eu devo ver o link "Adicionar Pessoa"
     E eu devo ver o link "Adicionar Empresa"
 

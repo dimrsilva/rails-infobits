@@ -2,4 +2,7 @@
   .control-group
     = form.label field[:name], :class => 'control-label'
     .controls
-      = form.send field[:widget], field[:name]
+      - if field[:name].to_s == @row.class.label_field.to_s
+        = form.send field[:widget], field[:name], :class => 'input-label'
+      - else
+        = form.send field[:widget], field[:name]

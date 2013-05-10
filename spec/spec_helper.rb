@@ -24,7 +24,7 @@ RSpec.configure do |config|
   # config.mock_with :rr
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -47,4 +47,10 @@ def sign_in_administrator
   @user = FactoryGirl.create('admin/user')
   Ability.any_instance.stub(:can?).and_return(true)
   sign_in @user
+end
+
+def request_params route, params = {}
+  action = route[:action]
+  route[:action] = nil
+  [action, route.merge(params)]
 end

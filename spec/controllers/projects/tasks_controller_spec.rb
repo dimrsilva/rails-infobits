@@ -7,11 +7,20 @@ describe Projects::TasksController do
   end
 
   let(:row) do
-    FactoryGirl.create(controller.send(:get_model).model_name.underscore, :project => project)
+    FactoryGirl.create('projects/task')
   end
 
-  context "Authenticated resource" do
-    include_examples "Authenticated resource"
+  it_behaves_like "Crud resource", Projects::Task do
+    let(:get_index_action) { nil }
+    let(:get_new_action) { {:action => :new, :projects_project_id => project.id} }
+    let(:get_edit_action) { {:action => :edit, :id => row.id, :projects_project_id => project.id} }
+    let(:get_show_action) { nil }
+    let(:post_create_action) { {:action => :create, :projects_project_id => project.id} }
+    let(:put_update_action) { {:action => :update, :id => row.id, :projects_project_id => project.id} }
+    let(:delete_destroy_action) { {:action => :destroy, :id => row.id, :projects_project_id => project.id} }
+  end
+
+  it_behaves_like "Authenticated resource" do
     let :get_example do
       get :new, :projects_project_id => project.id
     end
@@ -47,10 +56,9 @@ describe Projects::TasksController do
         c3 = FactoryGirl.create('contact/contact')
         project.colaborators << c1
         project.colaborators << c2
-        project.colaborators << c3
 
         get :new, :projects_project_id => project.id
-        assigns[:colaborators].should eql [c1,c2,c3]
+        assigns[:colaborators].should eql [c1,c2]
       end
     end
   end

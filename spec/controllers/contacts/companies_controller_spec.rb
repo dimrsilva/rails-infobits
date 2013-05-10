@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Contacts::CompaniesController do
   it_behaves_like "Authenticated resource"
   it_behaves_like "Paginated resource"
-  it_behaves_like "Crud resource"
+  it_behaves_like "Crud resource default behavior", Contact::Company
 
   context "User is authenticated" do
     before :each do

@@ -17,7 +17,6 @@ Funcionalidade: Cadastro de Projetos
     Quando eu clicar no botão de visualizar o registro "Projeto 1"
     Então eu devo ver o link "Adicionar Tarefa"
     E eu devo ver o link "Editar Projeto"
-    E eu devo ver o link "Remover Projeto"
     E eu devo ver uma lista com 2 tarefas
     E eu devo ver uma linha para a tarefa "Tarefa 1"
     E eu devo ver um botão de visualizar para o registro "Tarefa 1"

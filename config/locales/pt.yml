@@ -137,3 +137,6 @@ pt:
       edit: "Editar %{model}"
       destroy: "Remover %{model}"
       create: "Adicionar %{model}"
+      read: "Visualizar %{model}"
+    index:
+      list: "Lista de %{model}"
