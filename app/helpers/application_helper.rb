@@ -7,4 +7,10 @@ module ApplicationHelper
       link_to link_text, link_path
     end
   end
+
+  def parse_text text
+    auto_link(simple_format(text)) do |t|
+      truncate(t, :length => 30)
+    end
+  end
 end

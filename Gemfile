@@ -75,3 +75,6 @@ gem 'validates_timeliness', '~> 3.0'
 
 # Enable haml engine and generate haml files
 gem "haml-rails"
+
+#turn urls in links
+gem "rails_autolink"

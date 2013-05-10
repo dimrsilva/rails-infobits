@@ -14,7 +14,7 @@
       %p
         %b= @row.class.human_attribute_name(:description)+":"
         %br
-        = @row.description
+        = parse_text @row.description
   %h3= t 'projects/tasks'
   %ul
     - @row.tasks.each do |task|

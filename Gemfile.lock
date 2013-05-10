@@ -112,6 +112,8 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
+    rails_autolink (1.1.0)
+      rails (> 3.1)
     rails_sql_views (0.8.0)
       activerecord
     railties (3.2.12)
@@ -197,6 +199,7 @@ DEPENDENCIES
   mysql2
   pg
   rails (= 3.2.12)
+  rails_autolink
   rspec-rails
   sass-rails (~> 3.2.3)
   schema_plus

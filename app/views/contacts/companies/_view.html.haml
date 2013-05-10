@@ -17,4 +17,4 @@
       %p
         %strong= @row.class.human_attribute_name(:note)+":"
         %br
-        = @row.note
+        = parse_text @row.note
