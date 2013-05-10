@@ -1,0 +1,16 @@
+%strong= @row.class.human_attribute_name(:emails)+":"
+= @row.emails.map { |e| e.value }.join ', '
+%br
+%strong= @row.class.human_attribute_name(:phones)+":"
+= @row.phones.map { |p| p.value }.join ', '
+%br
+%strong= @row.class.human_attribute_name(:addresses)+":"
+- @row.addresses.each do |addr|
+  %address
+    = addr.street
+    %br
+    = addr.neighborhood+', ' if addr.neighborhood != ''
+    = addr.postal_code
+    %br
+    = addr.state+', ' if addr.state.strip != ''
+    = addr.country

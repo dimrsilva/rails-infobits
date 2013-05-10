@@ -54,6 +54,9 @@ pt:
         fullname: Nome
         note: Nota Adicional
         groups: Grupos
+        emails: E-mails
+        phones: Telefones
+        addresses: Endereços
       contact/person:
         firstname: Nome
         lastname: Sobrenome

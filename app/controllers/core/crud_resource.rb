@@ -8,7 +8,7 @@ module Core
       before_filter :init
       before_filter :parse_id_inputs
       before_filter :find_row, :only => [:show, :edit, :update, :destroy, :new, :create]
-      before_filter :process_form, :only => [:show, :edit, :new]
+      before_filter :process_form, :only => [:edit, :new]
       # before_filter :load_breadcrumbs
     end
 

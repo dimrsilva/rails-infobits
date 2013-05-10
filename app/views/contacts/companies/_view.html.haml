@@ -1,0 +1,20 @@
+.view
+  .row
+    .span5
+      %p
+        %br
+        %strong= @row.class.human_attribute_name(:doc_cnpj)+":"
+        = @row.doc_cnpj
+        %br
+        %strong= @row.class.human_attribute_name(:doc_ie)+":"
+        = @row.doc_ie
+        %br
+        %strong= @row.class.human_attribute_name(:doc_im)+":"
+        = @row.doc_im
+      %p
+        = render 'view_properties'
+    .span5
+      %p
+        %strong= @row.class.human_attribute_name(:note)+":"
+        %br
+        = @row.note
