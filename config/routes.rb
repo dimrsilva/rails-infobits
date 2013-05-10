@@ -36,7 +36,7 @@ Infobits::Application.routes.draw do
 
     scope :module => "projects" do
       resources :projects, :path => 'projetos', :as => 'projects_projects' do
-        resources :tasks, :as => 'projects_tasks', :except => [:show, :index]
+        resources :tasks, :path => 'tarefas', :as => 'projects_tasks', :except => [:show, :index]
       end
     end
   end
