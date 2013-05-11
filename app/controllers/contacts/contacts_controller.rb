@@ -12,6 +12,10 @@ class Contacts::ContactsController < ApplicationController
       Contact::Contact
     end
 
+    def load_table_list_columns
+      @table_list_columns = [:id, :fullname, :main_email, :main_phone]
+    end
+
     def load_index_actions
       if can? :create, Contact::Contact
         @action_buttons << {

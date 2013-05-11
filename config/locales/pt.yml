@@ -12,6 +12,7 @@ pt:
 
   home: Página Inicial
   edit: Editar
+  view: Visualizar
   remove: Remover
   search: Buscar
   create: Criar
@@ -57,6 +58,8 @@ pt:
         emails: E-mails
         phones: Telefones
         addresses: Endereços
+        main_email: E-mail
+        main_phone: Telefone
       contact/person:
         firstname: Nome
         lastname: Sobrenome

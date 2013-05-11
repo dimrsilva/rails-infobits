@@ -35,6 +35,14 @@ class Contact::Contact < ActiveRecord::Base
     "#{fullname} [id:#{id||'null'}]"
   end
 
+  def main_email
+    emails.first
+  end
+
+  def main_phone
+    phones.first
+  end
+
   protected
     def reject_empty_properties prop
       prop[:value].strip.blank?

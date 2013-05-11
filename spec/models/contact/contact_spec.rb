@@ -43,4 +43,16 @@ describe Contact::Contact do
     @contact.save
     @contact.to_s.should eql "Maria Pereira [id:#{@contact.id}]"
   end
+
+  it "should has main_email" do
+    @email = Contact::Property::Email.create(:value => 'test@example.com')
+    @contact.emails << @email
+    @contact.main_email.should be @email
+  end
+
+  it "should has main_phone" do
+    @phone = Contact::Property::Phone.create(:value => '32123456')
+    @contact.phones << @phone
+    @contact.main_phone.should be @phone
+  end
 end
