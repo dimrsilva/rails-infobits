@@ -63,6 +63,10 @@ class Projects::TasksController < ApplicationController
 
     def process_form
       @colaborators = @project.colaborators
+      @action_buttons << {
+        :text => I18n.t('helpers.link.back_to', :model => Projects::Project.model_name.human),
+        :url => projects_project_path(@row.project)
+      }
     end
 
     def find_project

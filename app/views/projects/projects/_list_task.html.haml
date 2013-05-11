@@ -1,0 +1,15 @@
+%li.li-tasks.alert.alert-info{:style=>'list-style:none'}
+  .pull-right
+    %i.icon-chevron-down
+    - if can? :update, task
+      = link_to edit_projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'view' do
+        %i.icon-pencil{:title => t(:edit)}
+    - if can? :destroy, task
+      = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'destroy', :method => 'delete', :confirm => 'Are you sure?' do
+        %i.icon-remove{:title => t(:remove)}
+  %strong= task.title
+  %div.description
+    - if task.responsible
+      %strong= Projects::Task.human_attribute_name(:responsible)+": "
+      = task.responsible
+    = parse_text task.description

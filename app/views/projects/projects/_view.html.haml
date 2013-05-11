@@ -11,20 +11,9 @@
         %b= @row.class.human_attribute_name(:colaborators)+":"
         = @row.colaborators.join ', '
     .span5
-      %p
-        %b= @row.class.human_attribute_name(:description)+":"
-        %br
-        = parse_text @row.description
+      %b= @row.class.human_attribute_name(:description)+":"
+      %br
+      = parse_text @row.description
   %h3= t 'projects/tasks'
   %ul
-    - @row.tasks.each do |task|
-      %li.alert.alert-info{:style=>'list-style:none'}
-        %b= task.title
-        = truncate(task.description, :length => 80)
-        .pull-right
-          - if can? :update, task
-            = link_to edit_projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'view' do
-              %i.icon-pencil{:title => t(:edit)}
-          - if can? :destroy, task
-            = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'destroy', :method => 'delete', :confirm => 'Are you sure?' do
-              %i.icon-remove{:title => t(:remove)}
+    = render :partial => 'list_task', :collection => @row.tasks, :as => :task
