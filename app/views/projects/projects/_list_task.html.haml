@@ -1,7 +1,8 @@
-- bg = task.task_status.color
-- border = darken_color(task.task_status.color, 0.8)
-- title_color = contrasting_text_color(task.task_status.color, 0.3)
-- text_color = contrasting_text_color(task.task_status.color, 0.5)
+- base_color = task.fixture ? task.fixture.color : 'FFFFFF'
+- bg = base_color
+- border = darken_color(base_color, 0.8)
+- title_color = contrasting_text_color(base_color, 0.3)
+- text_color = contrasting_text_color(base_color, 0.5)
 %li{:id => "task_#{task.id}"}
   %div.div-tasks.alert{:style=>"background:##{bg}; border-color:##{border};"}
     .pull-left

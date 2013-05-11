@@ -5,4 +5,4 @@
 %td
   - Projects::TaskStatus.order('percent DESC').all.each do |ts|
     - if (c = row.tasks.where(:task_status_id => ts.id).count) > 0
-      %span{:title => ts.value, :style=>"color:##{darken_color(ts.color, 0.7)}"}="("+c.to_s+")"
+      %span{:title => ts.value}="("+c.to_s+")"

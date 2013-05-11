@@ -1,0 +1,9 @@
+.row
+  .span1.control-group-color
+    = form.color_field :color, :class => 'input-block-level'
+  .span4
+    .input-append
+      = form.text_field :title, :class => 'input-block-level'
+      %span.add-on.item-remove
+        %i.icon-remove
+

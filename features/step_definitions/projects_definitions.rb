@@ -57,7 +57,7 @@ Dado %r/^que exista todos os registros para teste dos projetos$/ do
 end
 
 Então %r/^eu devo ver uma lista com (\d+) tarefas$/ do |qtd|
-  @grouptag = '.content .view>ul'
+  @grouptag = 'table.projects_tasks'
   @rowtag = 'li'
   page.find(@grouptag).all(@rowtag).count.should eql qtd.to_i
 end

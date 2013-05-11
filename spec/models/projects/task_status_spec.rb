@@ -11,20 +11,4 @@ describe Projects::TaskStatus do
     status.percent = "100"
     status.label.should eql "100% - Finished"
   end
-
-  it "should validate color" do
-    status = Projects::TaskStatus.new
-
-    status.color = '345'
-    status.should be_valid
-
-    status.color = '123456'
-    status.should be_valid
-
-    status.color = '#FFAAVV'
-    status.should_not be_valid
-
-    status.color = '#FFAACC'
-    status.should_not be_valid
-  end
 end

@@ -11,8 +11,26 @@
       %p
         %b= @row.class.human_attribute_name(:colaborators)+":"
         = @row.colaborators.join ', '
+      %p
+        %b= @row.class.human_attribute_name(:fixtures)+":"
+        %br
+        .projects_fixtures
+          - @row.fixtures.each do |fixture|
+            %span.label{:style => "background:##{fixture.color}; border: 1px solid ##{darken_color(fixture.color, 0.8)}"}
+              &nbsp;
+            = fixture.title
+            %br
     .span5
       = parse_text @row.description
   %h3= t 'projects/tasks'
-  %ul.sortable.projects_tasks
-    = render :partial => 'list_task', :collection => @row.tasks.roots.order(:index_position).all, :as => :task
+  %table.projects_tasks.table.table-bordered
+    %thead
+      %tr
+        - @task_statuses.each do |task_status|
+          %th{:style => "width:#{(99/@task_statuses_count).to_i}%;"}= task_status.value
+    %tbody
+      %tr
+        - @task_statuses.each do |task_status|
+          %td{:id => "task_status_#{task_status.id}"}
+            %ul.sortable.projects_tasks
+              = render :partial => 'list_task', :collection => @row.tasks.where(:task_status_id => task_status.id).roots.order(:index_position).all, :as => :task

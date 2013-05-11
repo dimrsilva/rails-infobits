@@ -1,7 +1,17 @@
 class Projects::ProjectsController < ApplicationController
   include Core::CrudResource
 
+  def show
+    @task_statuses_count = Projects::TaskStatus.count
+    @task_statuses = Projects::TaskStatus.order(:percent).all
+    super
+  end
+
   protected
+    def fill_aditional_fixture
+      @row.fixtures.build
+    end
+
     def get_model
       Projects::Project
     end
@@ -13,6 +23,7 @@ class Projects::ProjectsController < ApplicationController
     def process_form
       super
       @colaborators = Contact::Contact.joins(:groups).where('acts_as_colaborator = 1').group(:id).all
+      fill_aditional_fixture
     end
 
     def load_show_actions

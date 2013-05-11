@@ -21,8 +21,10 @@ FactoryGirl.define do
     association :task_status, :factory => 'projects/task_status'
   end
   factory 'projects/status'
-  factory 'projects/task_status' do
+  factory 'projects/task_status'
+  factory 'projects/fixture' do
     color 'ffffff'
+    association :project, :factory => 'projects/project'
   end
 
   factory 'contact/group' do

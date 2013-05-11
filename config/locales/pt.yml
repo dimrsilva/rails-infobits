@@ -98,6 +98,7 @@ pt:
         status: Status
         colaborators: Colaboradores
         tasks: Tarefas
+        fixtures: Funcionalidades
       projects/task:
         id: "#"
         title: Título

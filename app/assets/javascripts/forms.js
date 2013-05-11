@@ -3,8 +3,9 @@
         $('form').on('click', '.add-fields', function(event) {
             time = new Date().getTime();
             regexp = new RegExp($(this).data('id'), 'g');
-            $(this).before($(this).data('fields').replace(regexp, time))
-            event.preventDefault()
+            $(this).before($(this).data('fields').replace(regexp, time));
+            $(this).prev().find('*').trigger('elementload');
+            event.preventDefault();
         });
         $('form').on('click', '.item-remove',function(event) {
             var r_item = $(this).closest('.nested-resource-item');
@@ -23,9 +24,13 @@
             $('.title').text($(this).val());
         });
 
-        $('form .control-group-color :input').colourPicker({
-            title: false,
-            ico: '/assets/jquery.colourPicker.gif'
+        $('form').on('elementload', '.control-group-color :input', function() {
+            $(this).colourPicker({
+                title: false,
+                ico: '/assets/jquery.colourPicker.gif'
+            });
         });
+
+        $('*').trigger('elementload');
     });
 })(jQuery)

@@ -3,7 +3,15 @@ require 'spec_helper'
 describe Projects::ProjectsController do
   it_behaves_like "Authenticated resource"
   it_behaves_like "Paginated resource"
-  it_behaves_like "Crud resource default behavior", Projects::Project
+  it_behaves_like "Crud resource default behavior", Projects::Project do
+    context "with tasks" do
+      it "should be success on index when has tasks" do
+        task = FactoryGirl.create('projects/task')
+        get :index
+        response.should be_success
+      end
+    end
+  end
 
   context "User is authenticated" do
     before :each do
