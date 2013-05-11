@@ -20,7 +20,9 @@ FactoryGirl.define do
     association :project, :factory => 'projects/project'
   end
   factory 'projects/status'
-  factory 'projects/task_status'
+  factory 'projects/task_status' do
+    color 'ffffff'
+  end
 
   factory 'contact/group' do
     sequence(:name) { |n| "Group #{n}" }

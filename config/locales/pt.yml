@@ -109,6 +109,11 @@ pt:
       projects/status:
         id: "#"
         value: Valor
+      projects/task_status:
+        id: "#"
+        value: Valor
+        percent: Porcentagem
+        color: Cor
     errors:
       models:
         contact/property/email:
@@ -125,6 +130,10 @@ pt:
         contact/person:
           delete:
             is_representant: Impossível deletar pois essa pessoa é representante em alguma empresa
+        projects/task_status:
+          attributes:
+            color:
+              invalid: deve ser um hexadecimal válido
       messages:
         blank: não pode ser vazio
         too_short: "deve ter no mínimo %{count} caracteres"

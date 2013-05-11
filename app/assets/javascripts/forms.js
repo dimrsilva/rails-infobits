@@ -22,5 +22,10 @@
         $('form').on('keyup', ':input.input-label', function(event) {
             $('.title').text($(this).val());
         });
+
+        $('form .control-group-color :input').colourPicker({
+            title: false,
+            ico: '/assets/jquery.colourPicker.gif'
+        });
     });
 })(jQuery)
