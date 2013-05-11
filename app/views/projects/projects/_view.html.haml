@@ -1,7 +1,7 @@
 .view.view-projects_project
   %input#projects_project_id{:type => :hidden, :value => @row.id}
   .row
-    .span5
+    .span6
       %p
         %b= @row.class.human_attribute_name(:manager)+":"
         = @row.manager
@@ -20,7 +20,7 @@
               &nbsp;
             = fixture.title
             %br
-    .span5
+    .span6
       = parse_text @row.description
   %h3= t 'projects/tasks'
   %table.projects_tasks.table.table-bordered

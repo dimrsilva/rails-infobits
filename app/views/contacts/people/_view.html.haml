@@ -1,6 +1,6 @@
 .view
   .row
-    .span5
+    .span6
       %p
         %strong= @row.class.human_attribute_name(:birthdate)+":"
         = @row.birthdate
@@ -12,5 +12,5 @@
         = @row.doc_rg
       %p
         = render 'view_properties'
-    .span5
+    .span6
       = parse_text @row.note

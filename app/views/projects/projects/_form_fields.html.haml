@@ -1,17 +1,17 @@
 %fieldset
   %legend Briefing
   .row
-    .span5
+    .span6
       = form.labeled_input :title, :text_field, :class => 'input-block-level input-label'
       = form.labeled_input :manager
       = form.labeled_input :status_id, :domain_field, :domain => Projects::Status
-    .span5
+    .span6
       / = form.labeled_input :start_date, :date_field
       / = form.labeled_input :end_date, :date_field
       = render 'form_colaborators', :form => form
   .row
-    .span10
+    .span12
       = form.labeled_input :description, :text_area
   .row
-    .span10
+    .span12
       = form.nested_resource :fixtures

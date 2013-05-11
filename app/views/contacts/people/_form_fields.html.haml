@@ -1,12 +1,12 @@
 %fieldset
   %legend Briefing
   .row
-    .span5
+    .span6
       = form.labeled_input :firstname
       = form.labeled_input :lastname
       = form.labeled_input :note, :text_area
       = form.labeled_input :birthdate, :date_field
-    .span5
+    .span6
       = render 'form_groups', :form => form
 %fieldset
   %legend Contact
@@ -16,6 +16,6 @@
 %fieldset
   %legend Documents
   .row
-    .span5
+    .span6
       = form.labeled_input :doc_cpf
       = form.labeled_input :doc_rg

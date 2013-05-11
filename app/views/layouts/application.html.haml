@@ -28,7 +28,7 @@
             = render 'action_buttons'
     .container
       .row
-        .span10.content
+        .span12.content
           .system-messages
             - if flash[:notice]
               .alert.alert-success
@@ -41,7 +41,6 @@
                   &times;
                 = flash[:alert]
           = yield
-        .span2.sidebar
     #footer
       .container
         %p.muted.credit

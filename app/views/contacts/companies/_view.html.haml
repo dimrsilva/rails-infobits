@@ -1,6 +1,6 @@
 .view
   .row
-    .span5
+    .span6
       %p
         %br
         %strong= @row.class.human_attribute_name(:doc_cnpj)+":"
@@ -13,5 +13,5 @@
         = @row.doc_im
       %p
         = render 'view_properties'
-    .span5
+    .span6
       = parse_text @row.note
