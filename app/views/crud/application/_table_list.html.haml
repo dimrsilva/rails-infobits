@@ -1,6 +1,8 @@
 = form_tag '', :method => :get, :class => 'form-inline' do
   = text_field_tag :q, params[:q]
   = submit_tag t(:search), :class => 'btn'
+  - if params[:q]
+    = link_to t(:clear_search), polymorphic_url(@template_row.class), :class => 'btn'
 %table.table.table-hover
   %thead
     %tr

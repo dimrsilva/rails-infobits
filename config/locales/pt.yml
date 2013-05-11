@@ -15,6 +15,7 @@ pt:
   view: Visualizar
   remove: Remover
   search: Buscar
+  clear_search: Limpar Busca
   create: Criar
 
   create_row: "Adicionar %{row}"
