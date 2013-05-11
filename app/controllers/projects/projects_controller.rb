@@ -6,6 +6,10 @@ class Projects::ProjectsController < ApplicationController
       Projects::Project
     end
 
+    def load_table_list_columns
+      @table_list_columns = [:id, :title, :tasks]
+    end
+
     def process_form
       super
       @colaborators = Contact::Contact.joins(:groups).where('acts_as_colaborator = 1').group(:id).all

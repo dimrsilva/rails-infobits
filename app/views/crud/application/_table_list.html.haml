@@ -14,9 +14,7 @@
     - @list.each do |row|
       - if can? :read, row
         %tr
-          - @table_list_columns.each do |c|
-            %td
-              = row.send(c)
+          = render 'table_list_row', :row => row
           %td
             - if can? :read, row
               = link_to polymorphic_url(row, :page => params[:page]), :class => 'view'  do

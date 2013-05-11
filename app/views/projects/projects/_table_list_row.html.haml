@@ -1,0 +1,8 @@
+%td
+  = row.id
+%td
+  = row.title
+%td
+  - Projects::TaskStatus.order('percent DESC').all.each do |ts|
+    - if (c = row.tasks.where(:task_status_id => ts.id).count) > 0
+      %span{:title => ts.value}="("+c.to_s+")"

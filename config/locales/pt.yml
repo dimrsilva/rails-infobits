@@ -97,6 +97,7 @@ pt:
         end_date: Date de Fim
         status: Status
         colaborators: Colaboradores
+        tasks: Tarefas
       projects/task:
         id: "#"
         title: Título
