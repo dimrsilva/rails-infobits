@@ -60,6 +60,23 @@ describe Projects::TasksController do
         get :new, :projects_project_id => project.id
         assigns[:colaborators].should eql [c1,c2]
       end
+
+      context "without render views" do
+        render_views false
+        it "should batch update items" do
+          p = FactoryGirl.create('projects/project')
+          t1 = FactoryGirl.create('projects/task', :project => p)
+          t2 = FactoryGirl.create('projects/task', :project => p)
+          t3 = FactoryGirl.create('projects/task', :project => p)
+          data = [
+            ["0", {:id => t2.id.to_s, :parent_id => t1.id.to_s}],
+            ["1", {:id => t3.id.to_s, :parent_id => t1.id.to_s}]
+          ]
+          post :batch_update, :projects_project_id => p.id, :projects_tasks => data
+          response.should be_success
+          t1.children_tasks.count.should eql 2
+        end
+      end
     end
   end
 end

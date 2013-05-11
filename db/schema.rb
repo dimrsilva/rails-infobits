@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511011910) do
+ActiveRecord::Schema.define(:version => 20130511051627) do
 
   create_table "contact_contacts", :force => true do |t|
     t.string   "type"
@@ -147,9 +147,13 @@ ActiveRecord::Schema.define(:version => 20130511011910) do
     t.integer  "task_status_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "parent_id"
+    t.integer  "index_position"
     t.index ["project_id"], :name => "fk__projects_tasks_project_id"
     t.index ["responsible_id"], :name => "fk__projects_tasks_responsible_id"
     t.index ["task_status_id"], :name => "fk__projects_tasks_task_status_id"
+    t.index ["parent_id"], :name => "fk__projects_tasks_parent_id"
+    t.foreign_key ["parent_id"], "projects_tasks", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_tasks_parent_id"
     t.foreign_key ["project_id"], "projects_projects", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_tasks_project_id"
     t.foreign_key ["responsible_id"], "contact_contacts", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_tasks_responsible_id"
     t.foreign_key ["task_status_id"], "projects_task_statuses", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_projects_tasks_task_status_id"

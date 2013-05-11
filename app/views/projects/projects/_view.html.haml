@@ -1,4 +1,5 @@
-.view
+.view.view-projects_project
+  %input#projects_project_id{:type => :hidden, :value => @row.id}
   .row
     .span5
       %p
@@ -13,5 +14,5 @@
     .span5
       = parse_text @row.description
   %h3= t 'projects/tasks'
-  %ul
-    = render :partial => 'list_task', :collection => @row.tasks, :as => :task
+  %ul.sortable.projects_tasks
+    = render :partial => 'list_task', :collection => @row.tasks.roots.order(:index_position).all, :as => :task

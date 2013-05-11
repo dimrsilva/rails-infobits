@@ -2,19 +2,25 @@
 - border = darken_color(task.task_status.color, 0.8)
 - title_color = contrasting_text_color(task.task_status.color, 0.3)
 - text_color = contrasting_text_color(task.task_status.color, 0.5)
-%li.li-tasks.alert{:style=>"list-style:none; background:##{bg}; border-color:##{border};"}
-  .pull-right
-    %i.icon-chevron-down
-    - if can? :update, task
-      = link_to edit_projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'view' do
-        %i.icon-pencil{:title => t(:edit)}
-    - if can? :destroy, task
-      = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'destroy', :method => 'delete', :confirm => 'Are you sure?' do
-        %i.icon-remove{:title => t(:remove)}
-  %strong{:style => "color:##{title_color}"}= task.title
-  %div.description{:style => "color:##{text_color}; border-color:##{border};"}
-    - if task.responsible
-      %p
-        %strong= Projects::Task.human_attribute_name(:responsible)+": "
-        = task.responsible
-    = parse_text task.description
+%li{:id => "task_#{task.id}"}
+  %div.div-tasks.alert{:style=>"background:##{bg}; border-color:##{border};"}
+    .pull-left
+      - if can? :update, task
+        %i.icon-move
+    .pull-right
+      %i.icon-chevron-down
+      - if can? :update, task
+        = link_to edit_projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'view' do
+          %i.icon-pencil{:title => t(:edit)}
+      - if can? :destroy, task
+        = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'destroy', :method => 'delete', :confirm => 'Are you sure?' do
+          %i.icon-remove{:title => t(:remove)}
+    %strong{:style => "color:##{title_color}"}= task.title
+    %div.description{:style => "color:##{text_color}; border-color:##{border};"}
+      - if task.responsible
+        %p
+          %strong= Projects::Task.human_attribute_name(:responsible)+": "
+          = task.responsible
+      = parse_text task.description
+  %ul
+    = render :partial => 'list_task', :collection => task.children_tasks.order(:index_position).all, :as => :task

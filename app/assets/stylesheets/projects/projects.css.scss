@@ -2,13 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-li.li-tasks .description {
+.div-tasks .description {
   display: none;
   border-top: 1px solid;
   color: gray;
 }
 
-li.li-tasks i.icon-chevron-down,
-li.li-tasks i.icon-chevron-up {
+.div-tasks i.icon-chevron-down,
+.div-tasks i.icon-chevron-up,
+.div-tasks i.icon-move {
   cursor: pointer;
+}
+.div-tasks i.icon-move {
+  padding-right: 4px;
+}
+
+.div-tasks.alert {
+  margin-bottom: 8px;
+}
+
+.view-projects_project ul.projects_tasks li {
+  list-style: none;
 }

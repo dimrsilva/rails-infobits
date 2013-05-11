@@ -21,6 +21,14 @@ class Projects::TasksController < ApplicationController
     end
   end
 
+  def batch_update
+    params[:projects_tasks].each do |task_attrs|
+      task = Projects::Task.find(task_attrs[1][:id].to_i)
+      task.update_attributes(task_attrs[1])
+    end
+    render :nothing => true, :status => 200
+  end
+
   def create
     @row.attributes = params[get_model_name]
     respond_to do |format|
