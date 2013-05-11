@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def parse_text text
-    auto_link(simple_format(text)) do |t|
+    auto_link(simple_format(text), :html => {:target => '_blank'}) do |t|
       truncate(t, :length => 30)
     end
   end
