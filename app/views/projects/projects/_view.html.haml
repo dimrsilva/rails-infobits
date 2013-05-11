@@ -11,8 +11,6 @@
         %b= @row.class.human_attribute_name(:colaborators)+":"
         = @row.colaborators.join ', '
     .span5
-      %b= @row.class.human_attribute_name(:description)+":"
-      %br
       = parse_text @row.description
   %h3= t 'projects/tasks'
   %ul

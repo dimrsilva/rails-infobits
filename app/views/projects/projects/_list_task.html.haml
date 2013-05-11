@@ -1,4 +1,8 @@
-%li.li-tasks.alert.alert-info{:style=>'list-style:none'}
+- bg = task.task_status.color
+- border = darken_color(task.task_status.color, 0.8)
+- title_color = contrasting_text_color(task.task_status.color, 0.3)
+- text_color = contrasting_text_color(task.task_status.color, 0.5)
+%li.li-tasks.alert{:style=>"list-style:none; background:##{bg}; border-color:##{border};"}
   .pull-right
     %i.icon-chevron-down
     - if can? :update, task
@@ -7,9 +11,10 @@
     - if can? :destroy, task
       = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'destroy', :method => 'delete', :confirm => 'Are you sure?' do
         %i.icon-remove{:title => t(:remove)}
-  %strong= task.title
-  %div.description
+  %strong{:style => "color:##{title_color}"}= task.title
+  %div.description{:style => "color:##{text_color}; border-color:##{border};"}
     - if task.responsible
-      %strong= Projects::Task.human_attribute_name(:responsible)+": "
-      = task.responsible
+      %p
+        %strong= Projects::Task.human_attribute_name(:responsible)+": "
+        = task.responsible
     = parse_text task.description

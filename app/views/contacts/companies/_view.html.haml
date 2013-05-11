@@ -14,7 +14,4 @@
       %p
         = render 'view_properties'
     .span5
-      %p
-        %strong= @row.class.human_attribute_name(:note)+":"
-        %br
-        = parse_text @row.note
+      = parse_text @row.note
