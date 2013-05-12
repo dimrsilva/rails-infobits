@@ -4,13 +4,13 @@
     .span6
       %p
         %b= @row.class.human_attribute_name(:manager)+":"
-        = @row.manager
+        = @row.manager.fullname
         %br
         %b= @row.class.human_attribute_name(:status)+":"
         = @row.status.value
       %p
         %b= @row.class.human_attribute_name(:colaborators)+":"
-        = @row.colaborators.join ', '
+        = @row.colaborators.map { |c| c.fullname }.join ', '
       %p
         %b= @row.class.human_attribute_name(:fixtures)+":"
         %br

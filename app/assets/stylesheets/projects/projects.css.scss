@@ -5,6 +5,9 @@
 table.projects_tasks ul {
   margin: 0;
 }
+table.projects_tasks ul ul {
+  margin-left: 20px;
+}
 
 .div-tasks .description {
   display: none;
@@ -25,6 +28,9 @@ table.projects_tasks ul {
   margin-bottom: 8px;
   padding: 8px;
   text-shadow: none;
+}
+table.projects_tasks ul ul .div-tasks.alert {
+  padding: 4px;
 }
 
 .view-projects_project ul.projects_tasks {
