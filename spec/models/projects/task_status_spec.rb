@@ -14,18 +14,29 @@ describe Projects::TaskStatus do
   
   describe "status of work done or not" do
     subject { task }
-    context "with percent < 10" do
+
+    context "with percent <= 5" do
       let(:task) { FactoryGirl.create('projects/task_status', :percent => 5) }
+      it { should_not be_sprinted }
+      it { should_not be_work_started }
+      it { should_not be_work_finished }
+    end
+
+    context "with percent > 5 and < 10" do
+      let(:task) { FactoryGirl.create('projects/task_status', :percent => 6) }
+      it { should be_sprinted }
       it { should_not be_work_started }
       it { should_not be_work_finished }
     end
     context "with percent >= 10 and <= 90" do
       let(:task) { FactoryGirl.create('projects/task_status', :percent => 20) }
+      it { should be_sprinted }
       it { should be_work_started }
       it { should_not be_work_finished }
     end
     context "with percent > 90" do
       let(:task) { FactoryGirl.create('projects/task_status', :percent => 91) }
+      it { should be_sprinted }
       it { should be_work_started }
       it { should be_work_finished }
     end

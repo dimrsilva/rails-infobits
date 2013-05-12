@@ -14,6 +14,10 @@ class Projects::TaskStatus < Domain
     "#{percent}% - #{value}"
   end
 
+  def sprinted?
+    percent and percent > 5
+  end
+
   def work_started?
     percent and percent > 10
   end
