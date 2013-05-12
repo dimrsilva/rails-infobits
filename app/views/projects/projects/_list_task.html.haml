@@ -11,7 +11,7 @@
     .pull-right
       %i.icon-chevron-down
       - if can? :update, task
-        = link_to edit_projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'view' do
+        = link_to edit_projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'edit' do
           %i.icon-pencil{:title => t(:edit)}
       - if can? :destroy, task
         = link_to projects_project_projects_task_path(task, :projects_project_id => @row.id), :class => 'destroy', :method => 'delete', :confirm => 'Are you sure?' do

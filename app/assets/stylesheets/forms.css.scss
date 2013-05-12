@@ -21,3 +21,7 @@ input[type="text"], input[type="password"], input[type="email"], .ui-autocomplet
 .nested-resource-item {
   padding-bottom: 12px;
 }
+
+.ui-datepicker {
+  z-index: 10000 !important;
+}

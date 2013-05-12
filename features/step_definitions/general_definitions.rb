@@ -27,6 +27,8 @@ Quando %r/^eu clicar no botão de (\w+) o registro "([^"]*)"?/ do |action, label
     row.find('a.view').click()
   elsif action == 'deletar'
     row.find('a.destroy').click()
+  elsif action == 'editar'
+    row.find('a.edit').click()
   else
     raise "Nao achou botao"
   end
@@ -47,6 +49,12 @@ Então %r/^eu( não)? devo ver um botão de (\w+) para o registro "([^"]*)"?/ do
       row.should_not have_selector('a.destroy')
     else
       row.should have_selector('a.destroy')
+    end
+  elsif action == 'editar'
+    if negation
+      row.should_not have_selector('a.edit')
+    else
+      row.should have_selector('a.edit')
     end
   else
     raise "Nao achou botao"

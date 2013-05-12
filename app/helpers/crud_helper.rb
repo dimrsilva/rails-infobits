@@ -4,8 +4,8 @@ module CrudHelper
     map = {
       :binary      => 'text_field',
       :boolean     => 'check_box',
-      :date        => 'text_field',
-      :datetime    => 'text_field',
+      :date        => 'date_field',
+      :datetime    => 'datetime_field',
       :decimal     => 'text_field',
       :float       => 'text_field',
       :integer     => 'text_field',

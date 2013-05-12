@@ -9,3 +9,5 @@
       = form.labeled_input :estimated_effort
       = form.labeled_input :real_effort
       = form.labeled_input :task_status_id, :domain_field, :domain => Projects::TaskStatus.order(:percent)
+      = form.labeled_input :start_datetime, :datetime_field
+      = form.labeled_input :end_datetime, :datetime_field

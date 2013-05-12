@@ -21,7 +21,9 @@ FactoryGirl.define do
     association :task_status, :factory => 'projects/task_status'
   end
   factory 'projects/status'
-  factory 'projects/task_status'
+  factory 'projects/task_status' do
+    percent '0'
+  end
   factory 'projects/fixture' do
     color 'ffffff'
     association :project, :factory => 'projects/project'
