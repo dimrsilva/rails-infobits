@@ -14,7 +14,7 @@ describe Projects::Task do
 
   describe "automated datetime updates" do
     let(:default_status) { FactoryGirl.create('projects/task_status', :percent => 0) }
-    let(:start_status) { FactoryGirl.create('projects/task_status', :percent => 1) }
+    let(:start_status) { FactoryGirl.create('projects/task_status', :percent => 11) }
     let(:end_status) { FactoryGirl.create('projects/task_status', :percent => 100) }
     let(:task) { FactoryGirl.create('projects/task', :task_status => default_status) }
 

@@ -25,10 +25,10 @@ class Projects::Task < ActiveRecord::Base
     def automate_datetimes
       original = id ? Projects::Task.find(id) : self
       if id and original.task_status_id != self.task_status_id
-        if original.start_datetime == nil and task_status != nil and task_status.percent > 10
+        if original.start_datetime == nil and task_status != nil and task_status.work_started?
           self.start_datetime = DateTime.now
         end
-        if original.end_datetime == nil and task_status != nil and task_status.percent >= 100
+        if original.end_datetime == nil and task_status != nil and task_status.work_finished?
           self.end_datetime = DateTime.now
         end
       end
