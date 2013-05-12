@@ -111,7 +111,8 @@ describe Ability do
     it { should_not be_able_to :destroy, Projects::Project }
 
     it { should be_able_to :read, Projects::Task }
-    it { should be_able_to :update, Projects::Task }
+    it { should be_able_to :change_status, Projects::Task }
+    it { should_not be_able_to :update, Projects::Task }
     it { should_not be_able_to :create, Projects::Task }
     it { should_not be_able_to :destroy, Projects::Task }
 
@@ -128,12 +129,14 @@ describe Ability do
         end
 
         it { should be_able_to :read, task }
-        it { should be_able_to :update, task }
+        it { should be_able_to :change_status, task }
+        it { should_not be_able_to :update, task }
         it { should_not be_able_to :destroy, task }
       end
 
       context "with task which he is not the responsible" do
         it { should be_able_to :read, task }
+        it { should_not be_able_to :change_status, task }
         it { should_not be_able_to :update, task }
         it { should_not be_able_to :destroy, task }
       end

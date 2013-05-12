@@ -39,18 +39,16 @@ class Ability
       can :read, Contact::Contact
       can :create, Projects::Project
       can :manage, Projects::Project, :manager => user.contact
-      can :manage, Projects::Task do |task|
-        task.project.manager == user.contact
-      end
+      cannot :change_manager, Projects::Project
+      can :manage, Projects::Task, :project => { :manager => user.contact }
     elsif user.colaborator?
-      # can :change_status, Projects::Task, :responsible => user.contact
       can :read, Projects::Project do |project|
         project.colaborators.include? user.contact
       end
       can :read, Projects::Task do |task|
         task.project.colaborators.include? user.contact
       end
-      can :update, Projects::Task, :responsible => user.contact
+      can :change_status, Projects::Task, :responsible => user.contact
     end
   end
 end

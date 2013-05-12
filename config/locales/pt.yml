@@ -104,9 +104,10 @@ pt:
         title: Título
         description: Descrição
         responsible: Responsável
-        estimated_time: Tempo Estimado
-        real_time: Tempo Realizado
+        estimated_effort: Esforço Estimado
+        real_effort: Esforço Realizado
         taks_status: Status
+        fixture: Funcionalidade
       projects/status:
         id: "#"
         value: Valor

@@ -6,7 +6,7 @@
 %li{:id => "task_#{task.id}"}
   %div.div-tasks.alert{:style=>"background:##{bg}; border-color:##{border};"}
     .pull-left
-      - if can? :update, task
+      - if can? :change_status, task
         %i.icon-move
     .pull-right
       %i.icon-chevron-down

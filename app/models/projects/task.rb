@@ -6,8 +6,8 @@ class Projects::Task < ActiveRecord::Base
 
   scope :roots, where(:parent_id => nil)
   
-  attr_accessible :description, :estimated_time,
-    :real_time, :title, :responsible_id, :task_status_id, :fixture_id,
+  attr_accessible :description, :estimated_effort,
+    :real_effort, :title, :responsible_id, :task_status_id, :fixture_id,
     :index_position, :parent_id
 
   belongs_to :project, :class_name => 'Projects::Project', :foreign_key => :project_id

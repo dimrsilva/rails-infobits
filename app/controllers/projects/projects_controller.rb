@@ -7,6 +7,11 @@ class Projects::ProjectsController < ApplicationController
     super
   end
 
+  def new
+    @row.manager = current_user.contact
+    super
+  end
+
   protected
     def fill_aditional_fixture
       @row.fixtures.build
