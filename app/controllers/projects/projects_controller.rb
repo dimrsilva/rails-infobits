@@ -27,7 +27,7 @@ class Projects::ProjectsController < ApplicationController
 
     def process_form
       super
-      @colaborators = Contact::Contact.joins(:groups).where(:contact_groups => {:acts_as_colaborator => true}).group(:id).all
+      @colaborators = Contact::Contact.joins(:groups).where(:contact_groups => {:acts_as_colaborator => true}).group('contact_contacts.id').all
       fill_aditional_fixture
     end
 
