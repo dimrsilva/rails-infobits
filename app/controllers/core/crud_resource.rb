@@ -9,6 +9,7 @@ module Core
       before_filter :parse_id_inputs
       before_filter :find_row, :only => [:show, :edit, :update, :destroy, :new, :create]
       before_filter :process_form, :only => [:edit, :new]
+      after_filter :log_action, :only => [:update, :destroy, :create]
       # before_filter :load_breadcrumbs
     end
 
@@ -239,6 +240,28 @@ module Core
             end
           end
         end
+      end
+
+      def affected_log_action
+        @row
+      end
+
+      def linked_log_action
+        @row
+      end
+
+      def log_action
+        filters = Rails.application.config.filter_parameters
+        f = ActionDispatch::Http::ParameterFilter.new filters
+        f.filter :password => 'haha' # => {:password=>"[FILTERED]"}
+        log           = System::ActionLog.new
+        log.user      = current_user
+        log.params    = f.filter(params).to_json
+        log.affected  = affected_log_action
+        log.linked    = linked_log_action
+        log.ipaddress = request.remote_ip
+        log.referer   = request.referer
+        log.save
       end
   end
 end

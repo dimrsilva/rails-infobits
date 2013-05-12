@@ -72,7 +72,7 @@ describe Projects::TasksController do
             ["0", {:id => t2.id.to_s, :parent_id => t1.id.to_s}],
             ["1", {:id => t3.id.to_s, :parent_id => t1.id.to_s}]
           ]
-          post :batch_update, :projects_project_id => p.id, :projects_tasks => data
+          post :batch_update, :id => t2.id, :projects_project_id => p.id, :projects_tasks => data
           response.should be_success
           t1.children_tasks.count.should eql 2
         end

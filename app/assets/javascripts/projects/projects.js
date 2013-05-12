@@ -18,9 +18,10 @@
             items: 'li',
             toleranceElement: ' > div',
             connectWith: '.sortable.projects_tasks',
-            update: function(event, updated) {
+            stop: function(event, updated) {
                 var arr = $(updated.item).closest('.sortable').nestedSortable('toArray');
                 var task_status_id = $(updated.item).closest('td').attr('id').replace(/[^\d]/g, '');
+                var task_id = $(updated.item).attr('id').replace(/[^\d]/g, '');
                 post_array = []
                 for(var i in arr) {
                     if(arr[i].item_id) {
@@ -35,7 +36,7 @@
                 $.ajax({
                     url: '/projetos/'+projects_project_id+'/tarefas/batch_update',
                     method: 'POST',
-                    data: {projects_tasks: post_array}
+                    data: {id: task_id, projects_tasks: post_array}
                 });
             }
         }).disableSelection();

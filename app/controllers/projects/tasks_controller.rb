@@ -1,6 +1,7 @@
 class Projects::TasksController < ApplicationController
   before_filter :find_project
   include Core::CrudResource
+  after_filter :log_action, :only => [:batch_update]
 
   def index
     redirect_to @project
@@ -22,6 +23,8 @@ class Projects::TasksController < ApplicationController
   end
 
   def batch_update
+    @row = Projects::Task.find(params[:id])
+    @project = @row.project
     params[:projects_tasks].each do |task_attrs|
       task = Projects::Task.find(task_attrs[1][:id].to_i)
       task.update_attributes(task_attrs[1])
@@ -91,5 +94,9 @@ class Projects::TasksController < ApplicationController
       end
     rescue
       render "/errors/404", :status => 404
+    end
+
+    def linked_log_action
+      @project
     end
 end
