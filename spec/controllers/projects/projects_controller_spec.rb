@@ -18,29 +18,6 @@ describe Projects::ProjectsController do
       sign_in_administrator
     end
 
-    it "should convert manager string to object" do
-      @project = Projects::Project.new
-      @project.stub!(:id).and_return(1)
-      @project.stub!(:save)
-      Projects::Project.stub!(:find).with(1).and_return(@project)
-      @person = Contact::Person.new
-      @person.stub!(:id).and_return(5)
-      Contact::Person.stub!(:find).with(5).and_return(@person)
-
-      post :update, :id => @project.id, :projects_project => { :manager => @person.to_s }
-      controller.params[:projects_project][:manager].should eql @person
-    end
-
-    it "should convert manager string to nil, when invalid string is sent" do
-      @project = Projects::Project.new
-      @project.stub!(:id).and_return(1)
-      @project.stub!(:save)
-      Projects::Project.stub!(:find).with(1).and_return(@project)
-
-      post :update, :id => @project.id, :projects_project => { :manager => '' }
-      controller.params[:projects_project][:manager].should eql nil
-    end
-
     it "should see only contacts of groups marked as acts_as_colaborator on checkbox of colaborators" do
       @project = FactoryGirl.create('projects/project')
 
@@ -61,7 +38,7 @@ describe Projects::ProjectsController do
       @c3.save
 
       get :edit, :id => @project.id
-      assigns[:colaborators].should eql [@c1, @c2]
+      assigns[:colaborators].all.should eql [@c1, @c2]
     end
 
     it "should not show contact twice when he is in two groups which acts_as_colaborator" do
@@ -82,7 +59,7 @@ describe Projects::ProjectsController do
       @c3 = FactoryGirl.create('contact/person')
 
       get :edit, :id => @project.id
-      assigns[:colaborators].should eql [@c1, @c2]
+      assigns[:colaborators].all.should eql [@c1, @c2]
     end
   end
 end

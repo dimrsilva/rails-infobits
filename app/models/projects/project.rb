@@ -4,7 +4,7 @@ class Projects::Project < ActiveRecord::Base
     :title
   end
 
-  attr_accessible :description, :end_date, :start_date, :title, :status_id, :manager, :colaborator_ids, :fixtures_attributes
+  attr_accessible :description, :end_date, :start_date, :title, :status_id, :manager_id, :colaborator_ids, :fixtures_attributes
 
   belongs_to :status, :class_name => "Projects::Status"
   belongs_to :manager, :class_name => "Contact::Person"

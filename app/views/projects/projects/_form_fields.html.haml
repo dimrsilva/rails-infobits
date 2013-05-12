@@ -4,9 +4,9 @@
     .span6
       = form.labeled_input :title, :text_field, :class => 'input-block-level input-label'
       - if can? :change_manager, @row
-        = form.labeled_input :manager
+        = form.labeled_input :manager_id, :domain_field, :domain => @managers, :include_blank => true
       - else
-        = form.hidden_field :manager
+        = form.hidden_field :manager_id
       = form.labeled_input :status_id, :domain_field, :domain => Projects::Status
     .span6
       / = form.labeled_input :start_date, :date_field

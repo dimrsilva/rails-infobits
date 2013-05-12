@@ -4,7 +4,7 @@
     .span6
       %p
         %b= @row.class.human_attribute_name(:manager)+":"
-        = @row.manager.fullname
+        = @row.manager.fullname if @row.manager
         %br
         %b= @row.class.human_attribute_name(:status)+":"
         = @row.status.value
