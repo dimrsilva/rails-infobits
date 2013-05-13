@@ -16,9 +16,11 @@ class Projects::ProjectsController < ApplicationController
     find_row
     load_edit_actions
     @title = @row.title
+    params[:start] ||= DateTime.now.at_beginning_of_week
+    params[:end] ||= DateTime.now.at_end_of_week
     if params[:start] and params[:end]
-      @start_sprint_date = DateTime.parse params[:start]
-      @end_sprint_date = DateTime.parse params[:end]
+      @start_sprint_date = DateTime.parse(params[:start].to_s)
+      @end_sprint_date = DateTime.parse(params[:end].to_s)
 
       @days_count = (@end_sprint_date - @start_sprint_date).to_i
       _sprint_tasks = @row.tasks.of_sprint(@start_sprint_date, @end_sprint_date)
