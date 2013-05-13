@@ -254,13 +254,15 @@ module Core
         filters = Rails.application.config.filter_parameters
         f = ActionDispatch::Http::ParameterFilter.new filters
         f.filter :password => 'haha' # => {:password=>"[FILTERED]"}
-        log           = System::ActionLog.new
-        log.user      = current_user
-        log.params    = f.filter(params).to_json
-        log.affected  = affected_log_action
-        log.linked    = linked_log_action
-        log.ipaddress = request.remote_ip
-        log.referer   = request.referer
+        log            = System::ActionLog.new
+        log.user       = current_user
+        log.params     = f.filter(params).to_json
+        log.action     = params[:action]
+        log.controller = params[:controller]
+        log.affected   = affected_log_action
+        log.linked     = linked_log_action
+        log.ipaddress  = request.remote_ip
+        log.referer    = request.referer
         log.save
       end
   end

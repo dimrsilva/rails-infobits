@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512210707) do
+ActiveRecord::Schema.define(:version => 20130513002750) do
 
   create_table "contact_contacts", :force => true do |t|
     t.string   "type"
@@ -184,6 +184,8 @@ ActiveRecord::Schema.define(:version => 20130512210707) do
     t.string   "referer"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "action"
+    t.string   "controller"
     t.index ["user_id"], :name => "fk__system_action_logs_user_id"
     t.foreign_key ["user_id"], "admin_users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_system_action_logs_user_id"
   end
