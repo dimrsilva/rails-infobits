@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513002750) do
+ActiveRecord::Schema.define(:version => 20130513011827) do
 
   create_table "contact_contacts", :force => true do |t|
     t.string   "type"
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20130513002750) do
     t.integer  "fixture_id"
     t.datetime "start_datetime"
     t.datetime "end_datetime"
+    t.datetime "sprint_datetime"
     t.index ["project_id"], :name => "fk__projects_tasks_project_id"
     t.index ["responsible_id"], :name => "fk__projects_tasks_responsible_id"
     t.index ["task_status_id"], :name => "fk__projects_tasks_task_status_id"

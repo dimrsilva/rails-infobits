@@ -12,6 +12,30 @@ class Projects::ProjectsController < ApplicationController
     super
   end
 
+  def burndown
+    find_row
+    load_edit_actions
+    @title = @row.title
+    if params[:start] and params[:end]
+      @start_sprint_date = DateTime.parse params[:start]
+      @end_sprint_date = DateTime.parse params[:end]
+
+      @days_count = (@end_sprint_date - @start_sprint_date).to_i
+      _sprint_tasks = @row.tasks.of_sprint(@start_sprint_date, @end_sprint_date)
+      @tasks_count = _sprint_tasks.count
+
+      @perfect_burndown = [@tasks_count]
+      @real_burndown = [@tasks_count]
+
+      _current_day = @start_sprint_date
+      @days_count.times do |i|
+        _current_day = _current_day.tomorrow
+        @perfect_burndown << (@tasks_count.to_f * ((@days_count - i - 1).to_f / @days_count.to_f))
+        @real_burndown << @tasks_count - _sprint_tasks.where("end_datetime <= '#{_current_day.to_formatted_s(:db)}'").count
+      end
+    end
+  end
+
   protected
     def fill_aditional_fixture
       @row.fixtures.build
@@ -37,7 +61,13 @@ class Projects::ProjectsController < ApplicationController
       if can? :create, Projects::Task
         @action_buttons << {
           :text => I18n.t('helpers.link.create', :model => Projects::Task.model_name.human),
-          :url => new_projects_project_projects_task_url(:projects_project_id => @row.id)
+          :url => new_projects_project_projects_task_path(:projects_project_id => @row.id)
+        }
+      end
+      if can? :read, Projects::Task
+        @action_buttons << {
+          :text => I18n.t('helpers.link.burndown_graph'),
+          :url => burndown_projects_project_path(@row)
         }
       end
     end

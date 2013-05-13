@@ -15,6 +15,7 @@ pt:
   view: Visualizar
   remove: Remover
   search: Buscar
+  filter_sprint: Definir Intervalo de Sprint
   clear_search: Limpar Busca
   create: Criar
 
@@ -46,6 +47,7 @@ pt:
       contact/person: Pessoa
       contact/company: Empresa
       contact/group: Grupo de Contato
+      projects/fixture: Funcionalidade
       projects/project: Projeto
       projects/task: Tarefa
       projects/status: Status de Projeto
@@ -99,18 +101,21 @@ pt:
         colaborators: Colaboradores
         tasks: Tarefas
         fixtures: Funcionalidades
+      projects/status:
+        id: "#"
+        value: Valor
       projects/task:
         id: "#"
         title: Título
         description: Descrição
-        responsible: Responsável
+        responsible_id: Responsável
         estimated_effort: Esforço Estimado
         real_effort: Esforço Realizado
-        taks_status: Status
-        fixture: Funcionalidade
-      projects/status:
-        id: "#"
-        value: Valor
+        task_status_id: Status
+        fixture_id: Funcionalidade
+        sprint_datetime: Data e Hora de Sprint
+        start_datetime: Data e Hora de Início
+        end_datetime: Data e Hora de Fim
       projects/task_status:
         id: "#"
         value: Valor
@@ -158,5 +163,6 @@ pt:
       create: "Adicionar %{model}"
       read: "Visualizar %{model}"
       back_to: "Voltar para %{model}"
+      burndown_graph: Burndown
     index:
       list: "Lista de %{model}"

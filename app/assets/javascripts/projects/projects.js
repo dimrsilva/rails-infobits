@@ -35,5 +35,25 @@
                 });
             }
         });
+
+        if($('#burndown_graph').length) {
+            $.jqplot ('burndown_graph', burndown_graph_data, {
+                title: "Gráfico Burndown",
+                axesDefaults: {
+                    labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                },
+                axes: {
+                    // options for each axis are specified in seperate option objects.
+                    xaxis: {
+                        label: "Dias",
+                        pad: 0
+                    },
+                    yaxis: {
+                        label: "Tarefas Restantes",
+                        pad: 0
+                    }
+                }
+            });
+        }
     });
 })(jQuery)
